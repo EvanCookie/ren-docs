@@ -1,0 +1,22 @@
+# editor directories and files
+.idea
+.vscode
+
+
+# dependencies
+node_modules
+
+# compiled output
+.vitepress/dist/
+dist
+cache
+.cache
+.temp
+.tmp
+
+
+# log and lock files
+*.log
+
+
+.DS_Store

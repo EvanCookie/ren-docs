@@ -1,0 +1,61 @@
+# 任务名称
+name: Build and Deploy GitHub Actions
+
+# 定义触发此工作流程的事件
+on:
+  push:
+    branches: [master]
+
+  # 允许你从 Actions 选项卡手动运行此工作流程
+  workflow_dispatch:
+
+# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# 并发设置：只允许同时进行一次部署，避免重复部署
+concurrency:
+  group: pages # 并发组的名称，用于标识所有相关的部署任务
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 运行器
+    steps:
+      # 拉取代码
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 拉取完整的 git 历史记录
+
+      # 安装 pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      # 设置 node 版本
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      # 安装依赖构建
+      - name: Build
+        run: pnpm install && pnpm run docs:build
+
+      # 复制 README.md 到 dist 目录
+      - name: Copy files
+        run: cp README.md ./dist/
+
+      # 将构建产物部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          repository-name: EvanCookie/Renwick
+          branch: gh-pages
+          folder: dist
+          clean: true

@@ -1,5 +1,5 @@
 # 任务名称
-name: Build and Deploy GitHub Actions
+name: Build and Deploy To GitHub Actions
 
 # 定义触发此工作流程的事件
 on:

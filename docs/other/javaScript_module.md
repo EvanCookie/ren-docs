@@ -42,7 +42,7 @@ JavaScript 模块化是指将复杂的JavaScript应用程序分解成更小、�
 
 ::: code-group
 
-```js
+```js [school.js]
 const name = 'Ren'
 const slogan = '知识的海洋！'
 
@@ -60,7 +60,7 @@ exports.slogan = slogan
 exports.getTel = getTel
 ```
 
-```js
+```js [student.js]
 const name = 'JY'
 const motto = '相信明天会更好！'
 
@@ -78,7 +78,7 @@ exports.motto = motto
 exports.getTel = getTel
 ```
 
-```js
+```js [index.js]
 // 引入school模块暴露的所有内容
 const school = require('./school')
 

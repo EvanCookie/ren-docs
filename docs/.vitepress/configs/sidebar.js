@@ -45,11 +45,12 @@ export const sidebar = {
 
     '/other/': [
         {
-            text: '其他文档',
+            text: '其他笔记',
             items: [
                 { text: '跨域问题', link: '/other/cross_domain' },
                 { text: 'JavaScript模块化', link: '/other/javaScript_module' },
-                { text: 'Electron快速上手', link: '/other/electron_base' }
+                { text: 'Electron快速上手', link: '/other/electron_base' },
+                { text: '浏览器渲染原理', link: '/other/browser_render_principle' }, 
             ]
         }
     ],

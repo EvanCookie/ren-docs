@@ -1,17 +1,21 @@
-// https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
+import { h,onMounted } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
 
 /** @type {import('vitepress').Theme} */
 export default {
   extends: DefaultTheme,
+
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
+
     })
   },
+
   enhanceApp({ app, router, siteData }) {
-    // ...
+    // 使用 onMounted 在 Vue 组件挂载后初始化 medium-zoom
+    onMounted(() => {
+      
+    })
   }
 }

@@ -123,9 +123,9 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
 在确定了 DOM 树、计算样式以及布局树仍然不足以绘制页面，这里还需要有明确的绘制顺序，在此过程中主线程会遍历布局树并创建绘制记录。渲染主线程的⼯作到此为⽌，剩余步骤交给其他线程完成。
 ![img](./assets/Browser/Paint.png)
 
-:::tip 提示 
+:::tip 提示
 同样，我们可以在浏览器的 layers 面板看到当前页面对应图层的绘制记录：
-![img](./assets/Browser/Paint2.png)
+![img](./assets/Browser/paintTwo.png)
 :::
 
 ### 4.7 分块

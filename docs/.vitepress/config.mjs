@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 // 导入 nav,sidebar模块数据
-import { head, nav, sidebar} from './configs'
+import { head, nav, sidebar, vite} from './configs'
 
 export default defineConfig({
     // base: '/Renwick/',
@@ -66,6 +66,9 @@ export default defineConfig({
         // 页脚
         footer: {
             copyright: `Copyright © 2024-${new Date().getFullYear()} Evan Cookie`
-        }
+        },
     },
+
+    // vite 配置
+    vite
 })

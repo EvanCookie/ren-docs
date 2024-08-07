@@ -35,6 +35,7 @@ export const sidebar = {
                 { text: '基本使用', link: '/git/git_base' },
                 { text: '远程操作', link: '/git/git_remote' },
                 { text: '常用命令列表', link: '/git/git_command_list' },
+                { text: 'Commit提交规范', link: '/git/commit_messages' },
                 { text: 'Gitee', link: '/git/gitee' },
                 { text: 'GitHub', link: '/git/github' },
                 { text: 'VSCode中使用Git', link: '/git/vscode_git' },

@@ -6,9 +6,9 @@ import { head, nav, sidebar, vite} from './configs'
 export default defineConfig({
     // base: '/Renwick/',
     outDir: '../dist',
-    title: "Renwick",
+    title: "RenDocs",
     lang: 'zh-CN',
-    description: "Ren的知识库，包含前端常用知识、笔记、日常工具等",
+    description: "RenDocs知识库，包含前端常用知识、笔记、日常工具等",
     head,
 
     // markdown配置
@@ -65,6 +65,7 @@ export default defineConfig({
 
         // 页脚
         footer: {
+            message: 'Released under the MIT License.',
             copyright: `Copyright © 2024-${new Date().getFullYear()} Evan Cookie`
         },
     },

@@ -3,26 +3,26 @@
 layout: home
 
 hero:
-  name: "Renwick"
-  text: "Ren 的知识库"
-  tagline: 知识是进步的阶梯
+  name: "RenDocs"
+  text: "一些普通的前端文档"
+  tagline: 解开昔日旧枷锁，今日方知我是我。
   image:
-    src: /logo.png
-    alt: 图标
+    src: /background.svg
+    alt: 主页图标
   actions:
     - theme: brand
-      text: Home
+      text: 开始阅读
       link: /index
     - theme: alt
       text: GitHub
-      link: https://github.com/EvanCookie/Renwick
+      link: https://github.com/EvanCookie/rendocs
 
 features:
   - icon: 🛠️
     title: 工具导航
     details: 记录开发和学习中所用到的技术，插件，扩展等
     linkText: Go
-    link: https://www.baidu.com
+    link: /tools/index
   - icon: 📖
     title: 其他笔记
     details: 记录开发和日常学习的笔记

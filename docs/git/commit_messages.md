@@ -128,6 +128,14 @@ module.exports = {
     { value: "build", name: "build: 打包" },
   ],
 
+  // 定义你的作用域列表(省略此字段，则作用域将是可选的)
+  scopes: [  
+    // 你可以列出项目中的模块、组件或其他分类作为作用域选项。  
+    'docs',  
+    // 或者使用通配符来允许自定义作用域  
+    '*'  
+  ],  
+  
   // 消息步骤
   messages: {
     type: "请选择提交类型:",
@@ -146,4 +154,6 @@ module.exports = {
 }
 ```
 
-5、使用Commitizen代替git commit来创建提交
+5、使用git cz 代替git commit来创建提交
+
+![img](./assets/commit_messages/git-cz.png)

@@ -11,8 +11,8 @@ outline：[2,6]
 
 **线程是依附于进程的，是操作系统可识别的最小执行和调度单位**，而进程中使用多线程并行处理能提升运算效率，多线程可以并行处理任务，但是线程是不能单独存在的，它是由进程来启动和管理的。我们最熟悉的 JS 的运行就是线程这个维度。
 
-
 :::tip 进程与线程间的区别：
+
 - 一个线程依附于一个进程，一个进程可以有多个线程；
 - 线程之间共享进程中的数据。
 - 进程中的任意一线程执行出错，都会导致整个进程的崩溃，而进程之前不会相互影响。
@@ -20,7 +20,7 @@ outline：[2,6]
 - 进程之间的内容相互隔离，只能通过 IPC 通信。
 
 > 进程好比火车，线程好比车厢，一辆火车有多节车厢，不同的火车之间互不干扰，但是一节车厢失火会殃及多节车厢
-:::
+> :::
 
 ## 2 Chrome 架构
 
@@ -39,7 +39,6 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
 - 当浏览器的网络进程，收到服务器返回的 HTML 文档后，会产生一个渲染任务，并将其传递给渲染主进程的消息队列。
 - 在事件循环的作用下，渲染主进程从消息队列中取出渲染任务，开启渲染流程。
 
-
 渲染的核心工作是将 HTML、CSS 和 JavaScript 转换为用户可以与之交互的网页。在这个工作过程中，输入的 HTML 经过一些子阶段，最后输出像素。
 
 ## 4. 浏览器渲染原理
@@ -54,29 +53,23 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
 
 ![alt text](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/DOM.png)
 
- - 在 DOM 树的解析过程中，如果遇到 img、css 或者 js 资源时，主线程会向 Browser 主进程的网络线程发送请求以获取对应的资源。
-
- - HTML解析过程中如果遇到CSS，浏览器会启动一个预解析器来下载CSS，从而不会暂停 HTML的解析
-
- - 当解析的过程中遇到 `<script>` 标签时，主线程会暂停 HTML 的解析，从而进行 js 代码的加载、解析和执行。因为 js 代码中可能涉及对页面结构的修改，主线程必须等待 js 运行才能恢复对 HTML 文档的解析。我们可以通过在 `<script>` 标签上加上 async 或者 defer 属性来异步加载执行 js 代码，避免 js 阻塞 HTML 的解析。
+- 在 DOM 树的解析过程中，如果遇到 img、css 或者 js 资源时，主线程会向 Browser 主进程的网络线程发送请求以获取对应的资源。
+- HTML解析过程中如果遇到CSS，浏览器会启动一个预解析器来下载CSS，从而不会暂停 HTML的解析
+- 当解析的过程中遇到 `<script>` 标签时，主线程会暂停 HTML 的解析，从而进行 js 代码的加载、解析和执行。因为 js 代码中可能涉及对页面结构的修改，主线程必须等待 js 运行才能恢复对 HTML 文档的解析。我们可以通过在 `<script>` 标签上加上 async 或者 defer 属性来异步加载执行 js 代码，避免 js 阻塞 HTML 的解析。
 
 ### 4.2 构建 CSSOM树
 
- - 浏览器在解析HTML的同时或之后，会解析CSS样式表，将其转换成浏览器能够理解的样式对象模型[CSSOM](https://developer.mozilla.org/zh-CN/docs/Web/API/CSS_Object_Model)树。
-
- - CSSOM树描述了页面上所有CSS选择器的层级结构和属性
-![CSSOM](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/CSSOM.png)
-
+- 浏览器在解析HTML的同时或之后，会解析CSS样式表，将其转换成浏览器能够理解的样式对象模型[CSSOM](https://developer.mozilla.org/zh-CN/docs/Web/API/CSS_Object_Model)树。
+- CSSOM树描述了页面上所有CSS选择器的层级结构和属性
+  ![CSSOM](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/CSSOM.png)
 
 ### 4.3 计算样式
 
 样式计算的目的是为了计算出 DOM 节点中每个元素的具体样式，在计算过程中需要遵守 CSS 的继承和层叠两个规则，大体可分为以下几点：
 
- - 有了DOM树和CSSOM树之后，浏览器会结合这两棵树来进行构建
-
- -  构建过程中会转换样式表中的属性值，使其标准化。比如：相对单位会变成绝对单位（`em`变成`px`）
-
- - 最终构建出一棵带有全部节点具体样式的DOM树
+- 有了DOM树和CSSOM树之后，浏览器会结合这两棵树来进行构建
+- 构建过程中会转换样式表中的属性值，使其标准化。比如：相对单位会变成绝对单位（`em`变成`px`）
+- 最终构建出一棵带有全部节点具体样式的DOM树
 
 ![alt text](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/ComputedStyle.png)
 
@@ -89,17 +82,17 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
 
 有了 DOM 树和 DOM 对应的 Computed Style 之后还不足以显示页面，接下来还需要计算出 DOM 树中可见元素的几何位置，这个计算过程叫做布局。
 
-![layout](./assets//Browser/Layout.png)
+![layout](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Layout.png)
 
 :::warning 注意
 大部分时候，DOM 树和布局树并非一一对应。
- - display:none 的节点没有几何信息，因此不会生成到布局树
- ![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/displayNone.png)
- - 伪元素选择器，虽然 DOM 树中不存在这些伪元素节点，但它们拥有几何信息，所以会生成到布局树中。
- ![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Before.png)
-  - 匿名行盒、匿名块盒等等都会导致 DOM 树和布局树无法一一对应。
-:::
 
+- display:none 的节点没有几何信息，因此不会生成到布局树
+  ![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/displayNone.png)
+- 伪元素选择器，虽然 DOM 树中不存在这些伪元素节点，但它们拥有几何信息，所以会生成到布局树中。
+  ![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Before.png)
+- 匿名行盒、匿名块盒等等都会导致 DOM 树和布局树无法一一对应。
+  :::
 
 ### 4.5 分层
 
@@ -107,16 +100,17 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
 ![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Layers.png)
 
 :::warning 注意
- - 并不是每个节点都包含一个图层，如果一个节点没有对应的层，那么这个节点就从属于父节点所在的图层。最终每一个节点都会直接或者间接地从属于一个图层。
+
+- 并不是每个节点都包含一个图层，如果一个节点没有对应的层，那么这个节点就从属于父节点所在的图层。最终每一个节点都会直接或者间接地从属于一个图层。
 
 通常满足下面两点便会提升为一个单独的图层：
+
 1. 拥有层叠上下文属性的元素会被提升为单独的一层。层叠上下文
 2. 需要剪裁的地方也会被创建为图层（overflow）。
 
 可以在浏览器的 layers 面板看到当前页面的分层情况：
-![IMG](./assets//Browser/BrowserLayers.png)
+![IMG](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Layers.png)
 :::
-
 
 ### 4.6 绘制
 
@@ -150,8 +144,6 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
 
 又称回流，本质就是重新计算Layout树，当我们通过 js 或者 css 属性更新了元素的几何属性，例如元素的宽度、高度，此时浏览器会重新触发布局 Layout 并重新执行后面全部的渲染流程，因此，重排的开销是最大的。
 ![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/reflow.png)
-
-
 
 ## 6. 重绘（repaint）
 

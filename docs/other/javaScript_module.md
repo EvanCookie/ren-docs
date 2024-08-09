@@ -170,7 +170,7 @@ ES6 模块化规范是一个 **官方标准** 的规范，它是在语言标准�
 
 ::: code-group
 
-```js
+```js [hospital.js]
 // 导出name
 export let name = '北京人民医院'
 // 导出slogan
@@ -182,7 +182,7 @@ export function getTel (){
 }
 ```
 
-```js
+```js [doctor.js]
 // 导出name
 export const name = '张三'
 // 导出motto
@@ -194,7 +194,7 @@ export function getTel (){
 }
 ```
 
-```js
+```js [index.js]
 // 引入hospital模块暴露的所有内容
 import * as hospital from './hospital.js'
 
@@ -202,7 +202,7 @@ import * as hospital from './hospital.js'
 import * as doctor from './doctor.js'
 ```
 
-```html
+```html [index.html]
 <!-- 注意 type 要设置为 module -->
 <script type="module" src="./index.js"></script>
 ```
@@ -363,7 +363,7 @@ import './hello.js'
 思考如下面代码会输出什么？
 ::: code-group
 
-```js
+```js [模块1]
 import { counter, increase} from "./2.js"
 
 console.log(counter)
@@ -372,7 +372,7 @@ increase()
 console.log(counter)
 ```
 
-```js
+```js [模块2]
 export let counter = 1
 
 export function increase() {

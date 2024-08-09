@@ -46,10 +46,10 @@ npm run serve
 :::
 
 `webpack`构建 
-![webpack](./assets/vue3/webpack.png)
+![webpack](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/webpack.png)
 
 `vite`构建
-![vite](./assets/vue3/vite.png)
+![vite](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/vite.png)
 
 
 ```powershell
@@ -79,7 +79,7 @@ npm create vue@latest
 
 安装官方推荐的`vscode`插件：
 
-![volar](assets/vue3/Vue_Official.png)
+![volar](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/Vue_Official.png)
 
 ::: info 说明
 - `Vite` 项目中，`index.html` 是项目的入口文件，在项目最外层。
@@ -100,13 +100,13 @@ npm create vue@latest
 
 `Options`类型的 `API`，数据、方法、计算属性等，是分散在：`data`、`methods`、`computed`中的，若想新增或者修改一个需求，就需要分别修改：`data`、`methods`、`computed`，不便于维护和复用。
 
-![1.gif](./assets/vue3/options_API.png)
+![1.gif](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/options_API.png)
 
 - Composition API 的优势
 
 可以用函数的方式，更加优雅的组织代码，让相关功能的代码更加有序的组织在一起。
 
-![3.gif](./assets/vue3/Composition_API.png)
+![3.gif](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/Composition_API.png)
 
 
 ## 3.2. setup
@@ -407,7 +407,7 @@ function test(){
 
 区别：
 - `ref`创建的变量必须使用`.value`（可以使用`volar`插件自动添加`.value`）。
-   ![自动补充value](./assets/vue3/自动补充value.png)
+   ![自动补充value](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/自动补充value.png)
 - `reactive`重新分配一个新对象，会失去响应式（可以使用`Object.assign`去整体替换）。
 
 使用原则：
@@ -490,7 +490,7 @@ const testFun = () => {
 
 - 作用：根据已有数据计算出新数据（和`Vue2`中的`computed`作用一致）。
 
-![img](assets/vue3/computed.gif)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/computed.gif)
 
 ```vue
 <script lang="ts" setup name="Person">
@@ -1171,7 +1171,7 @@ let { dogList, getDog } = useDog()
 # 4. 路由
 
 ## 4.1. 对路由的理解
-![img](assets/vue3/router.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/router.png)
 
 ## 4.2. 基本切换效果
 
@@ -1526,7 +1526,7 @@ router.replace('/news') // 用法相同
 
 ## 5.1. 准备一个效果
 
-<img src="./assets/vue3/pinia_example.gif" alt="pinia_example" style="zoom:30%;border:3px solid" />
+<img src="https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/pinia_example.gif" alt="pinia_example" style="zoom:30%;border:3px solid" />
 
 ## 5.2. 搭建 pinia 环境
 
@@ -1801,7 +1801,7 @@ export const useTalkStore = defineStore('talk',()=>{
 - `$children`被砍掉了。
 
 常见搭配形式:
-![img](assets/vue3/image-20231119185900990.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/image-20231119185900990.png)
 
 ## 6.1. props
 
@@ -2218,7 +2218,7 @@ defineProps(['a', 'b', 'c', 'd', 'x', 'y', 'updateA'])
 
 ### 默认插槽
 
-![img](./assets/vue3/default_slot.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/default_slot.png)
 
 ```vue
 父组件中：
@@ -2274,7 +2274,7 @@ defineProps(['a', 'b', 'c', 'd', 'x', 'y', 'updateA'])
 ### 作用域插槽
 
 1. 理解：<span style="color:red">数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。</span>
-2. 官方图例![image-20240708220133657](./assets/vue3/image-20240708220133657.png)
+2. 官方图例![image-20240708220133657](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/image-20240708220133657.png)
 3. 具体编码：
 
    ```vue
@@ -2499,7 +2499,7 @@ const msg = useMyRef('请输入内容', 1000)
 </template>
 ```
 
-![image-20240709135856287](./assets/vue3/image-20240709135856287.png)
+![image-20240709135856287](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue3/image-20240709135856287.png)
 
 # 8. Vue3新组件
 

@@ -24,7 +24,7 @@ outline：[2,6]
 
 ## 2 Chrome 架构
 
-![image-20240806152556739](./assets/Browser/Chrome.png)
+![image-20240806152556739](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Chrome.png)
 
 Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utility 进程、多个 Renderer 进程和多个 Plugin 进程。
 
@@ -46,13 +46,13 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
 
 按照渲染的时间顺序，大致可分为：构建 DOM 树、计算样式、布局、分层、绘制、分块、光栅化和合成。
 
-![img](./assets/Browser//rander.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/rander.png)
 
 ### 4.1 构建 DOM树
 
 当渲染进程开始接收 HTML 数据时，主线程开始解析 HTML 并将其转换为浏览器能够理解的结构 [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)树。
 
-![alt text](./assets/Browser/DOM.png)
+![alt text](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/DOM.png)
 
  - 在 DOM 树的解析过程中，如果遇到 img、css 或者 js 资源时，主线程会向 Browser 主进程的网络线程发送请求以获取对应的资源。
 
@@ -65,7 +65,7 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
  - 浏览器在解析HTML的同时或之后，会解析CSS样式表，将其转换成浏览器能够理解的样式对象模型[CSSOM](https://developer.mozilla.org/zh-CN/docs/Web/API/CSS_Object_Model)树。
 
  - CSSOM树描述了页面上所有CSS选择器的层级结构和属性
-![CSSOM](./assets/Browser/CSSOM.png)
+![CSSOM](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/CSSOM.png)
 
 
 ### 4.3 计算样式
@@ -78,25 +78,25 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
 
  - 最终构建出一棵带有全部节点具体样式的DOM树
 
-![alt text](./assets/Browser/ComputedStyle.png)
+![alt text](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/ComputedStyle.png)
 
 ::: tip 提示
 在浏览器中，我们可以通过 Computed 面板查看当前节点的 Computed Style。
-![img](./assets/Browser/RanderTree.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/RanderTree.png)
 :::
 
 ### 4.4 布局
 
 有了 DOM 树和 DOM 对应的 Computed Style 之后还不足以显示页面，接下来还需要计算出 DOM 树中可见元素的几何位置，这个计算过程叫做布局。
 
-![layout](./assets//Browser//Layout.png)
+![layout](./assets//Browser/Layout.png)
 
 :::warning 注意
 大部分时候，DOM 树和布局树并非一一对应。
  - display:none 的节点没有几何信息，因此不会生成到布局树
- ![img](./assets/Browser/displayNone.png)
+ ![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/displayNone.png)
  - 伪元素选择器，虽然 DOM 树中不存在这些伪元素节点，但它们拥有几何信息，所以会生成到布局树中。
- ![img](./assets/Browser/Before.png)
+ ![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Before.png)
   - 匿名行盒、匿名块盒等等都会导致 DOM 树和布局树无法一一对应。
 :::
 
@@ -104,7 +104,7 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
 ### 4.5 分层
 
 有了布局树后，对于一些简单页面已经具备绘制条件了，但是对于我们现代的页面来说，有很多复杂的效果，如一些复杂的 3D 转换、 z-index 做 z 轴排序等，对于这些场景为了页面展示的正确性，渲染引擎还会为特定的节点生成专用的图层，并生成一棵对应的图层树。
-![img](./assets/Browser/Layers.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Layers.png)
 
 :::warning 注意
  - 并不是每个节点都包含一个图层，如果一个节点没有对应的层，那么这个节点就从属于父节点所在的图层。最终每一个节点都会直接或者间接地从属于一个图层。
@@ -121,44 +121,44 @@ Chrome 浏览器包括：1 个 Browser 主进程、1 个 GPU 进程、1个 Utili
 ### 4.6 绘制
 
 在确定了 DOM 树、计算样式以及布局树仍然不足以绘制页面，这里还需要有明确的绘制顺序，在此过程中主线程会遍历布局树并创建绘制记录。渲染主线程的⼯作到此为⽌，剩余步骤交给其他线程完成。
-![img](./assets/Browser/Paint.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Paint.png)
 
 :::tip 提示
 同样，我们可以在浏览器的 layers 面板看到当前页面对应图层的绘制记录：
-![img](./assets/Browser/paintTwo.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/paintTwo.png)
 :::
 
 ### 4.7 分块
 
 由于我们浏览器的视口是有限的，但是页面的长度可能很长，有些图层可能超过视口很多，而用户对页面的感知是视口维度的，一次性渲染整个图层未免有些浪费，因此合成线程首先对每个图层进行分块，将其划分为更多的小区域。它会从线程池中拿取多个线程来完成分块工作。
-![img](./assets/Browser/Tiling.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Tiling.png)
 分块的⼯作是交给多个线程同时进⾏的
-![img](./assets/Browser/Tiling2.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Tiling2.png)
 
 ### 4.8 光栅化（栅格化）
 
 有了图块之后，合成线程会将每一个图块发送到光栅线程（Raster thread），光栅线程会光栅化每一个图块并存在 GPU 内存中。在这个过程中，合成线程会优先选择视口内（靠近视口的块）的图块提交给光栅线程。
-![img](./assets/Browser/Raster.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/Raster.png)
 
 ### 4.9 合成
 
 光栅化完成后，合成线程会创建合成帧通过 IPC 通信提交给浏览器进程。浏览器进程接收到合成帧后，会将其内容绘制到内存中（具体来说，是绘制到浏览器进程的绘图缓冲区中）。最后，浏览器会利用操作系统的图形系统将内存中的图像渲染到屏幕上。
-![img](./assets/Browser/rander.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/rander.png)
 至此，从接收 HTML 数据到页面的展示全流程就结束了
 
 ## 5. 重排（reflow ）
 
 又称回流，本质就是重新计算Layout树，当我们通过 js 或者 css 属性更新了元素的几何属性，例如元素的宽度、高度，此时浏览器会重新触发布局 Layout 并重新执行后面全部的渲染流程，因此，重排的开销是最大的。
-![img](./assets/Browser/reflow.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/reflow.png)
 
 
 
 ## 6. 重绘（repaint）
 
 repaint 的本质就是重新根据分层信息计算了绘制指令。当我们通过 js 或者 css 更新元素的绘制属性，例如元素的背景色、文字的颜色等，此时布局和分层阶段被省略，只执行后续的流程，因此重绘的开销相比重排会小很多。
-![img](./assets/Browser/repaint.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/repaint.png)
 
 :::tip 小提示
 为什么我们为了避免重排和重绘而去采用 css3 的 transform 等属性呢？因为此时整个主线程的流程会被全部跳过，执行后续的流程，而后续的流程交给了在执行线程、光栅线程和 GPU 进程上执行没有占据主线程的资源，因此效率是最高的。
-![img](./assets/Browser/buttom.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Browser/buttom.png)
 :::

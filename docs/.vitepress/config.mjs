@@ -1,10 +1,10 @@
 import { defineConfig } from 'vitepress'
 
 // 导入 nav,sidebar模块数据
-import { head, nav, sidebar, vite} from './configs'
+import { head, nav, sidebar} from './configs'
 
 export default defineConfig({
-    // base: '/Renwick/',
+    // base: '/renDocs/',
     outDir: '../dist',
     title: "RenDocs",
     lang: 'zh-CN',
@@ -68,8 +68,5 @@ export default defineConfig({
             message: 'Released under the MIT License.',
             copyright: `Copyright © 2024-${new Date().getFullYear()} Evan Cookie`
         },
-    },
-
-    // vite 配置
-    vite
+    }
 })

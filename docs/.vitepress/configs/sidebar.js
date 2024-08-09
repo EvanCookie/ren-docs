@@ -3,9 +3,9 @@ export const sidebar = {
         {
             text: 'Vue生态',
             items: [
-                { text: 'Vue2', link: 'vue/vue2' },
-                { text: 'Vue3', link: 'vue/vue3' },
-                { text: '相关链接', link: 'vue/related_link' },
+                { text: 'Vue2', link: '/vue/vue2' },
+                { text: 'Vue3', link: '/vue/vue3' },
+                { text: '相关链接', link: '/vue/related_link' },
             ]
         }
     ],
@@ -14,7 +14,7 @@ export const sidebar = {
         {
             text: 'React生态',
             items: [
-                { text: 'react笔记', link: '/markdown-examples' },
+                { text: 'react笔记', link: '/react/index' },
             ]
         }
     ],
@@ -23,7 +23,7 @@ export const sidebar = {
         {
             text: 'node相关',
             items: [
-                { text: 'nodejs基本', link: '/markdown-examples' },
+                { text: 'nodejs基本', link: '/nodejs/base' },
             ]
         }
     ],

@@ -6,7 +6,7 @@
 
 为了提高团队的协作效率和代码质量，我们需要建立一套统一的提交规范，确保每次提交的信息都是清晰、一致且具有描述性的。如下图
 
-![](./assets/commit_messages/messages.png)
+![](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/commit_messages/messages.png)
 
 
 
@@ -102,7 +102,7 @@ npm i cz-customizable --save-dev
 }
 ```
 
-![img](./assets/commit_messages/packageJSON.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/commit_messages/packageJSON.png)
 
 第四步：在项目根目录下创建 `.cz-config.js` 文件
 
@@ -156,4 +156,4 @@ module.exports = {
 
 5、使用git cz 代替git commit来创建提交
 
-![img](./assets/commit_messages/git-cz.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/commit_messages/git-cz.png)

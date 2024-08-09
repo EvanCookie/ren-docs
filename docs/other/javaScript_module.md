@@ -34,7 +34,7 @@ JavaScript 模块化是指将复杂的JavaScript应用程序分解成更小、�
 - 导出（暴露）：模块公开其内部的一部分(变量、函数等)，使这些内容可以被其他模块使用。
 - 导入（引入）：模块引入和使用其他模块导出的内容，以重用代码和功能。
 
-![](./assets/javaScript_module/module1-2.jpg)
+![](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/javaScript_module/module1-2.jpg)
 
 ## 5. CommonJS 模块化规范
 
@@ -97,7 +97,7 @@ const student = require('./student')
 
 ::: danger 注意点如下：
 
-1. 每个模块内部的：`this`、 `exports`、 `modules.exports` 在初始时，都指向 **同一个** 空对象，该空对象就是当前模块导出的数据，如下图：![img](./assets/javaScript_module/CJS.png)
+1. 每个模块内部的：`this`、 `exports`、 `modules.exports` 在初始时，都指向 **同一个** 空对象，该空对象就是当前模块导出的数据，如下图：![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/javaScript_module/CJS.png)
 2. 无论如何修改导出对象，最终导出的都是`module.exports`的值。
 3. `exports`是对`module.exports`的初始引用，仅为了方便给导出象添加属性，所以不能使用`exports = value`的形式导出数据，但是可以使用`module.exports = xxxx`导出数据。
    :::
@@ -404,7 +404,7 @@ export function increase() {
 ### 7.1 环境准备
 
 第一步：准备文件结构：
-![img](./assets/javaScript_module/AMD.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/javaScript_module/AMD.png)
 
 ::: info
 
@@ -493,7 +493,7 @@ requirejs(['school','student'],function(school,student){
 ### 8.1 环境准备
 
 第一步：准备文件结构
-![img](./assets/javaScript_module/CMD.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/javaScript_module/CMD.png)
 ::: info
 
 1. js 文件夹中存放业务逻辑代码，`main.js`用于汇总各模块。

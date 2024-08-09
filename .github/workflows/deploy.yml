@@ -21,7 +21,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  # 打包工作 
+  build:
     runs-on: ubuntu-latest  # 使用最新的 Ubuntu 运行器
     steps:
       # 拉取代码
@@ -51,11 +52,16 @@ jobs:
       - name: Copy files
         run: cp README.md ./dist/
 
-      # 将构建产物部署到 GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      # 上传构建产物
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          repository-name: EvanCookie/Renwick
-          branch: gh-pages
-          folder: dist
-          clean: true
+          path: dist
+          
+  # 部署工作
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

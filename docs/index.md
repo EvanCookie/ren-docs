@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 开始阅读
-      link: /index
+      link: /other/cross_domain
     - theme: alt
       text: GitHub
       link: https://github.com/EvanCookie/rendocs

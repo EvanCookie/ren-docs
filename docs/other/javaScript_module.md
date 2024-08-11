@@ -116,8 +116,17 @@ const { name, slogan, getTel } = require('./school')
 // 引入同时解构+重命名
 const {name:stuName,motto,getTel:stuTel} = require('./student')
 ```
+### 5.4 CJS注意点
 
-### 5.4 扩展知识
+::: warning 
+1. 导入 `Node 内置模块`时，直接给`require`传递模块名即可。
+2. 默认情况下导入`.js`和`.json`文件时，可以省略文件后缀。
+3. 若require 传递的是文件夹路径，会导入`package.json`文件中 `main` 属性指定的文件，若不存在，则会导入文件夹下的 `index.js`或 `index.json`，如果依然不存在就会报错。
+4. 每个`.js`文件都是一个模块，`require`会引起模块代码执行，执行后决定导出内容。
+5. 模块执行时，是被包裹在一个内置的函数中执行的，所以每个模块都有自己的作用域。
+:::
+
+### 5.5 扩展知识
 
 一个 JS 模块在执行时，是被包裹在一个内置函数中执行的，所以每个模块都有自己的作用域，我们可以通过如下方式验证这一说法：
 
@@ -139,7 +148,7 @@ function (exports, require, module, __filename, __dirname){
 }
 ```
 
-### 5.5 浏览器运行
+### 5.6 浏览器运行
 
 Node.js 默认是支持 CommonJS 规范的，但浏览器端不支持，所以需要经过编译，步骤如下：
 

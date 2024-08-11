@@ -21,9 +21,9 @@ export const sidebar = {
 
     '/nodejs/': [
         {
-            text: 'node相关',
+            text: 'Node',
             items: [
-                { text: 'nodejs基本', link: '/nodejs/base' },
+                { text: '基本使用', link: '/nodejs/base' },
             ]
         }
     ],

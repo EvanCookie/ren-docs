@@ -7,7 +7,8 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "start": "vitepress dev docs --open"
   },
   "devDependencies": {
     "cz-customizable": "^7.2.1",

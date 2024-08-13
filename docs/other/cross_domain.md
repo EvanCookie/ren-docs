@@ -14,7 +14,7 @@ W3C 上对同源策略的说明 [Same origin policy](https://www.w3.org/Security
 
 1. 源的组成部分
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/cross_domain/1719992251274-9c3c42b6-4964-4011-b2e8-653ae5da02df.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/cross_domain/1719992251274-9c3c42b6-4964-4011-b2e8-653ae5da02df.png)
 如果两个 URL 的：协议、域名（主机）和端口，都相同的话，则这两个 URL 是同源的。
 
 
@@ -29,11 +29,11 @@ W3C 上对同源策略的说明 [Same origin policy](https://www.w3.org/Security
 
 3. **同源**请求
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/cross_domain/1720140467554-b5c959c6-b12e-461a-bf45-3b2898aa9221.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/cross_domain/1720140467554-b5c959c6-b12e-461a-bf45-3b2898aa9221.png)
 
 4. **非同源**请求
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/cross_domain/1720140482719-1b91392b-92ab-4173-86ad-748ee648349a.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/cross_domain/1720140482719-1b91392b-92ab-4173-86ad-748ee648349a.png)
 
 ::: tip
 『所处源』与『目标源』不一致，就是『非同源』，又称 『异源』或『跨域』。
@@ -100,7 +100,7 @@ const getData = async () => {
  - 跨域限制仅存在浏览器端，服务端不存在跨域限制。
  - 即使跨域了，Ajax 请求也可以正常发出，但响应数据不会交给开发者。
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/cross_domain/1720226863233-4e44efc5-4592-46d1-9aaa-1d5a995794de.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/cross_domain/1720226863233-4e44efc5-4592-46d1-9aaa-1d5a995794de.png)
 
  - `<link>`、`<script>`、`<img>`...... 这些标签发出的请求也可能跨域，只不过浏览器对标签跨域不做严格限制，对开发几乎无影响。
 
@@ -127,7 +127,7 @@ const getData = async () => {
 
 整体思路：服务器在给出响应时，通过添加`Access-Control-Allow-Origin`响应头，来明确表达允许某个源发起跨域请求，随后浏览器在校验时，直接通过。
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/cross_domain/1720165802024-3bdaa5a8-ff29-4dc6-8939-d5aa6cede5e4.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/cross_domain/1720165802024-3bdaa5a8-ff29-4dc6-8939-d5aa6cede5e4.png)
 
 
 ::: code-group
@@ -210,11 +210,11 @@ app.get('/cars', corsMiddleWare, (req,res)=>{
 | `Access-Control-Allow-Headers` |         允许的自定义头         |
 |    `Access-Control-Max-Age`    | 预检请求的结果缓存时间（可选） |
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/cross_domain/1720165070779-e4d5df36-989b-40c5-8dc8-3b3dc8f224fb.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/cross_domain/1720165070779-e4d5df36-989b-40c5-8dc8-3b3dc8f224fb.png)
 
 2. 第二步：处理实际的跨域请求（与处理简单请求跨域的方式相同）
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/cross_domain/1720165802024-3bdaa5a8-ff29-4dc6-8939-d5aa6cede5e4-1721540505397-12.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/cross_domain/1720165802024-3bdaa5a8-ff29-4dc6-8939-d5aa6cede5e4-1721540505397-12.png)
 
 服务端核心代码：
 
@@ -292,7 +292,7 @@ app.use(cors(corsOptions)) // 使用cors中间件
 
 3. 图示：
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/cross_domain/1720167287059-88ee3857-60a8-4e68-ba50-2ec0f38e6cb0.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/cross_domain/1720167287059-88ee3857-60a8-4e68-ba50-2ec0f38e6cb0.png)
 
 4. 代码示例：
 

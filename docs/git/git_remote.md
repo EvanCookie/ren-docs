@@ -4,7 +4,7 @@
 
 Git有很多优势，其中之一就是远程操作非常简便。
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git_remote/bg2014061202.jpg)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/git_remote/bg2014061202.jpg)
 
 ::: info 常用命令
 - git clone

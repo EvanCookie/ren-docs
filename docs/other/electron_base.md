@@ -1,10 +1,10 @@
 ## 1. Electron 简介
 
-![image-20240804194001988](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Electron/Electron.png)
+![image-20240804194001988](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/Electron/Electron.png)
 
 [Electron](https://www.electronjs.org/) 是一个使用 JavaScript、HTML 和 CSS 构建桌面应用程序的框架。Electron  将 [Chromium](https://www.chromium.org/chromium-projects/) 和 [Node.js](https://nodejs.org/) 嵌入到了一个二进制文件中，因此它允许你仅需一个JavaScript代码仓库，就可以撰写支持 Windows、macOS 和 Linux 的跨平台应用。
 
-![img.png](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Electron/apps.png)
+![img.png](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/Electron/apps.png)
 
 
 ## 2. Electron 的优势
@@ -20,7 +20,7 @@
 
 ### 3.1. 技术架构
 
-![image-20240804195531670](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Electron/technology.png)
+![image-20240804195531670](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/Electron/technology.png)
 
 - **Chromium**： 为 Electron 提供强大的 UI 渲染能力，由于 Chromium 本身跨平台，因此无需考虑代码的兼容性。最重要的是，可以使用HTML、CSS、JavaScript 进行 Electron开发。
 - **Node.js**：由于 Chromium 并不具备原生 GUI 的操作能力，因此 Electron 内部集成 Node.js，编写 UI 的同时也能够调用操作系统的底层 API，例如 path、fs、http 等模块。
@@ -34,11 +34,11 @@ Chromium 负责页面 UI 渲染，Node.js 负责业务逻辑，Native API 则提
 
 Electron 继承了来自 Chromium 的多进程架构，这使得此框架在架构上非常相似于一个现代的网页浏览器。下方来自 [Chrome 漫画](https://www.google.com/googlebooks/chrome/) 的图表可视化了此模型：
 
-![Chrome的多进程架构](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Electron/Chromium.png)
+![Chrome的多进程架构](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/Electron/Chromium.png)
 
 Electron 应用程序的结构非常相似。 作为应用开发者，你将控制两种类型的进程：主进程 和 渲染器进程。 这类似于上文所述的 Chrome 的浏览器和渲染器进程。
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Electron/Course.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/Electron/Course.png)
 
 
 ## 4. 创建应用程序
@@ -119,7 +119,7 @@ yarn start
 ```
 
 效果如下：
-![image-20240804210841747](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Electron/douyin.png)
+![image-20240804210841747](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/Electron/douyin.png)
 
 
 ## 5. 加载本地页面
@@ -148,7 +148,7 @@ win.loadFile('./pages/index.html')
 
 第三步：`yarn start` 运行项目，此时开发者工具（Ctrl + Shift + I ）控制台会报出一个安全警告
 
-![image-20240804215406808](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Electron/CSP.png)
+![image-20240804215406808](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/Electron/CSP.png)
 
 第四步：需要在`index.html`添加`meta`内容，配置内容安全策略CSP
 
@@ -256,7 +256,7 @@ yarn add nodemon -D
 
 ## 8. 主进程与渲染进程
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Electron/Main_Renderer.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/Electron/Main_Renderer.png)
 Electron 中主要控制两类进程：主进程、渲染器进程。
 
 #### 8.1. 主进程
@@ -340,7 +340,7 @@ btn.addEventListener("click", () => {
 
 5. 整体文件结构如下：
 
-![image.png](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Electron/File.png)
+![image.png](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/Electron/File.png)
 
 
 
@@ -606,7 +606,7 @@ yarn run build
 
 [Electron-vite](https://cn-evite.netlify.app/) 快速、简单且功能强大，旨在开箱即用。
 
-![electron-vite](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/Electron/electron-vite.png)
+![electron-vite](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/other/Electron/electron-vite.png)
 
 Electron-vite 是一个新型构建工具，旨在为 Electron 提供更快、更精简的体验。
 

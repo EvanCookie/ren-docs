@@ -7,9 +7,9 @@
 
 | **运行时**                                                   | **官网**                                   | **简介**                                                     |
 | ------------------------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20240810105220201](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/node/node_base202408101055910.png) | [https://nodejs.org/](https://nodejs.org/) | 由 Ryan Dahl 开发，于 2009年发布，通过 Google 的 V8 引擎实现运行 JS，Node 的出现让 JS 不再限于浏览器，极大扩展了 JS 的应用范围，Node 的一个显著特点是非阻塞的事件驱动架构，适合处理高并发的网络应用。 |
-| ![image-20240810105551586](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/node/node_base202408101055640.png) | [https://deno.com/](https://deno.com/)     | Deno 也是由 Ryan Dahl 开发，Deno 使用 Rust 语言开发，于2018年首次亮相，Deno 的设计理念是克服 Node 的一些不足之处，例如：Deno 默认禁止文件、网络和环境访问，除非明确的授权。 |
-| ![image-20240810105610102](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/node/node_base202408101056137.png) | [https://bun.sh/](https://bun.sh/)         | Bun 是一个全新的 JavaScript 运行时，由 Jarred Sumner 开发，于2022 年首次亮相，它的目标是成为速度最快的 JS 运行时，Bun 使用 Zig 语言编写，自带了一个快速的 JS 引擎，支持： TypeScript、JSX。 |
+| ![image-20240810105220201](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/node/node_base/202408101055910.png) | [https://nodejs.org/](https://nodejs.org/) | 由 Ryan Dahl 开发，于 2009年发布，通过 Google 的 V8 引擎实现运行 JS，Node 的出现让 JS 不再限于浏览器，极大扩展了 JS 的应用范围，Node 的一个显著特点是非阻塞的事件驱动架构，适合处理高并发的网络应用。 |
+| ![image-20240810105551586](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/node/node_base/202408101055640.png) | [https://deno.com/](https://deno.com/)     | Deno 也是由 Ryan Dahl 开发，Deno 使用 Rust 语言开发，于2018年首次亮相，Deno 的设计理念是克服 Node 的一些不足之处，例如：Deno 默认禁止文件、网络和环境访问，除非明确的授权。 |
+| ![image-20240810105610102](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/node/node_base/202408101056137.png) | [https://bun.sh/](https://bun.sh/)         | Bun 是一个全新的 JavaScript 运行时，由 Jarred Sumner 开发，于2022 年首次亮相，它的目标是成为速度最快的 JS 运行时，Bun 使用 Zig 语言编写，自带了一个快速的 JS 引擎，支持： TypeScript、JSX。 |
 
 
 
@@ -29,14 +29,14 @@ Node 是基于 **Chrome V8** 引擎的 JavaScript 运行时，由 Ryan Dahl 于2
 
 **下载地址：** https://nodejs.org/en/download/prebuilt-installer
 
-![image-20240810110143069](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/node/node_base202408101101111.png)
+![image-20240810110143069](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/node/node_base/202408101101111.png)
 
 **安装步骤如下：**
 
 - 双击安装文件，依次选择『 下一步 』即可，默认的安装路径是 `C:\Program Files\nodejs`。
 - 安装完成后，在 CMD 命令行窗口下运行 `node -v`，如显示版本号则证明安装成功。
 
-![image-20240810110601680](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/node/node_base202408101106712.png)
+![image-20240810110601680](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/node/node_base/202408101106712.png)
 
 
 

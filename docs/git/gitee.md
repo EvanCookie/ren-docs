@@ -1,19 +1,19 @@
 ## Gitee 简介
 
-![logo](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/giteeLogo.png)
+![logo](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/giteeLogo.png)
 
 [Gitee](https://gitee.com/) 是一个 Git 仓库管理网站，可以创建远程中心仓库，为多人合作开发提供便利，与 Gitee 类似的网站还有很多，例如：[GitHub](https://github.com/)、[GitLab](https://about.gitlab.com/) 等等，有了 Gitee 的基础后 GitHub 和 GitLab 也同样能很快上手。
 
 ## 1. 新建远程仓库
 
 第一步：打开gitee官网，点击 `+` 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/new.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/new.png)
 
 第二步：编辑仓库信息，点击创建
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/new-01.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/new-01.png)
 
 第二步：创建完成
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/new-02.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/new-02.png)
 
 ## 2. 关联远程库
 
@@ -50,7 +50,7 @@ git push -u origin master
 ```
 
 ::: tip
-- 可能会弹窗提示输入密码 ![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/password.png)
+- 可能会弹窗提示输入密码 ![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/password.png)
 - push 表示推送。
 - -u（upstream） 表示关联，加上 -u 以后，后续提交时可以直接使用 git push 即可。
 - origin 远端仓库的别名。
@@ -91,11 +91,11 @@ git clone --depth 1 https://xxxx/xxxx/xxxx.git
 ::: warning
 - 克隆下来的仓库，使用 `git branch` 命令，只能看到默认分支，其他分支其实也已经克隆下来了，但不出现在`git branch`列表中，需要使用`git branch -r`或 `gir branch -a`来查看。
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/clone01.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/clone01.png)
 
 - 需要切换到其他分支时，可以直接`git checkout -b xxx origin/xxx`来进行切换，当然对于 1.7.0 以后得 git 版本，也可以使用简短的命令：`git checkout xxx`来切换。
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/clone02.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/clone02.png)
 :::
 
 ## 7. SSH 协议
@@ -129,34 +129,34 @@ SSH（Secure Shell）是一种网络协议，SSH利用公钥加密技术提供�
 ssh-keygen -t ed25519 -C "Gitee SSH Key"
 ```
 2. 提示输入公钥的保存地址，如无需修改，直接回车即可：
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/ssh01-1.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/ssh01-1.png)
 3. 提示是否为私钥建立密码，如需要直接输入，不需要直接回车：
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/ssh01-2.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/ssh01-2.png)
 4. 提示确认密码，输入和上一步相同的密码即可，若无密码直接回车：
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/ssh01-3.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/ssh01-3.png)
 5. 提示生成完毕
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/ssh01-4.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/ssh01-4.png)
 :::
 
 ::: details 第二步：在Gitee上配置公钥
 1. 输入`ls ~/.ssh/`命令查看生成的公钥与私钥
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/ssh02-1.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/ssh02-1.png)
 - 私钥文件 `id_ed25519`
 - 公钥文件 `id_ed25519.pub`
 2. 使用`cat ~/.ssh/id_ed25519.pub`查看公钥
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/ssh02-2.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/ssh02-2.png)
 3. 复制公钥，添加到Gitee设置中
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/ssh02-3.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/ssh02-3.png)
 :::
 
 ::: details 第三步：本地库与远端交互
 1. 尝试使用 ssh 方式克隆仓库
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/ssh03-1.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/ssh03-1.png)
 
 2. 第一次操作，此处会有提示，输入 yes 即可
 
-![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/gitee/ssh03-2.png)
+![img](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/git/gitee/ssh03-2.png)
 
 3. 克隆成功 （后续的拉取，推送，可以直接尽心，无序任何的密码输入）
 :::

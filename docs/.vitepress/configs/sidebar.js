@@ -55,6 +55,7 @@ export const sidebar = {
                 { text: 'JavaScript模块化', link: '/other/javaScript_module' },
                 { text: 'Electron快速上手', link: '/other/electron_base' },
                 { text: '浏览器渲染原理', link: '/other/browser_render_principle' }, 
+                { text: 'Ajax网络请求', link: '/other/Ajax' }, 
             ]
         }
     ],

@@ -24,6 +24,7 @@ export const sidebar = {
             text: 'Node.jS',
             items: [
                 { text: '基本使用', link: '/nodejs/base' },
+                { text: 'Express', link: '/nodejs/express' },
                 { text: '包管理工具', link: '/nodejs/package' },
                 { text: '相关链接', link: '/nodejs/related_link' }
             ]

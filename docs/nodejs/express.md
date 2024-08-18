@@ -6,7 +6,7 @@ Express是一个基于 Node.js 的轻量级 Web 应用框架，因其简洁性�
 
 中文地址：[https://www.expressjs.com.cn](https://www.expressjs.com.cn/)
 
-## 2. 基本使用
+## 2. 创建 Express 应用
 
 第一步：安装 express
 

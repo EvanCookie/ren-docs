@@ -15,7 +15,7 @@ hero:
       link: /other/cross_domain
     - theme: alt
       text: GitHub
-      link: https://github.com/EvanCookie/rendocs
+      link: https://github.com/EvanCookie/ren-docs
 
 features:
   - icon: 🛠️

@@ -4,5 +4,3 @@
 
 ## 访问地址
 [https://docs.evancookie.cn](https://docs.evancookie.cn)
-
-[https://ren-docs.vercel.app](https://ren-docs.vercel.app) (墙)

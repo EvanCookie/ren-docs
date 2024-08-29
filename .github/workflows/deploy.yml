@@ -48,15 +48,11 @@ jobs:
       - name: Build
         run: pnpm install && pnpm run docs:build
 
-      # 复制 README.md 到 dist 目录
-      - name: Copy files
-        run: cp README.md ./dist/
-
       # 上传构建产物
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: docs/.vitepress/dist
           
   # 部署工作
   deploy:

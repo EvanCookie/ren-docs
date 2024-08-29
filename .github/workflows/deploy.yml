@@ -17,7 +17,7 @@ permissions:
 
 # 并发设置：只允许同时进行一次部署，避免重复部署
 concurrency:
-  group: pages # 并发组的名称，用于标识所有相关的部署任务
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -44,20 +44,21 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      # 安装依赖构建
+      # 安装依赖并构建
       - name: Build
         run: pnpm install && pnpm run docs:build
 
-      # 上传构建产物
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/.vitepress/dist
+      # 复制介绍文件
+      - name: Copy files
+        run: cp README.md ./dist/
+
+      # 部署
+      - name: Deploy to GitHub Pages  
+        uses: JamesIves/github-pages-deploy-action@v4  
+        with:  
+          branch: gh-pages
+          folder: dist
+          single-commit: true # 将所有更改压缩到一个提交中  
+          clean: true # 在部署前清空 gh-pages 分支
           
-  # 部署工作
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+

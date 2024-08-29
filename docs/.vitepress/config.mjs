@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 import { head, nav, sidebar} from './configs'
 
 export default defineConfig({
+    outDir: '../dist',
     title: "RenDocs",
     lang: 'zh-CN',
     description: "RenDocs知识库，包含前端常用知识、笔记、日常工具等",

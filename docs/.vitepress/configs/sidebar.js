@@ -1,4 +1,15 @@
 export const sidebar = {
+    '/framework/': [
+        {
+            text: '框架',
+            items: [
+                { text: 'Vue2', link: '/vue/vue2' },
+                { text: 'Vue3', link: '/vue/vue3' },
+                { text: '相关链接', link: '/vue/related_link' },
+            ]
+        }
+    ],
+
     '/vue/': [
         {
             text: 'Vue',
@@ -50,7 +61,7 @@ export const sidebar = {
 
     '/other/': [
         {
-            text: '其他笔记',
+            text: '笔记',
             items: [
                 { text: '跨域问题', link: '/other/cross_domain' },
                 { text: '前端项目部署', link: '/other/project_deploy' },

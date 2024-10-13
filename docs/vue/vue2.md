@@ -124,7 +124,7 @@ const vm = new Vue({
 });
 ```
 
-虽然没有完全遵循 [MVVM 模型](https://zh.wikipedia.org/wiki/MVVM)，但是 Vue 的设计也受到了它的启发。因此在文档中经常会使用 `vm` (ViewModel 的缩写) 这个变量名表示 Vue 实例。
+虽然没有完全遵循 [MVVM 模型](https://baike.baidu.com/item/MVVM/96310?fr=ge_ala)，但是 Vue 的设计也受到了它的启发。因此在文档中经常会使用 `vm` (ViewModel 的缩写) 这个变量名表示 Vue 实例。
 
 ![image-20241010183514912](https://cdn.jsdelivr.net/gh/EvanCookie/pictureBed@master/vue/vue2/202410101835252.webp)
 
@@ -275,6 +275,163 @@ const vm = new Vue({
 :::
 
 ## 2.7 计算属性与监听器
+
+### 计算属性
+
+模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。在模板中放入太多的逻辑会让模板过重且难以维护。例如：
+
+```html
+<div id="app">{{ message.split('').reverse().join('') }}</div>
+```
+
+对于任何复杂逻辑，你都应当使用**计算属性**。
+
+```html
+<!-- 示列 -->
+<div id="app">
+  <!-- 普通数据 -->
+  <p>Original message: "{{ message }}"</p>
+  <!-- 计算属性 -->
+  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+</div>
+```
+
+```js
+const vm = new Vue({
+  el: "#app",
+  data: {
+    message: "Hello",
+  },
+  computed: {
+    reversedMessage: function () {
+      return this.message.split("").reverse().join(""); // `this` 指向 vm 实例
+    },
+  },
+});
+```
+
+计算属性的完整写法：
+
+- 当读取`reversedMessage`的值时，调用`get()`函数，返回值就作为`reversedMessage`的值。
+- 当修改`reversedMessage`的值时，调用`set()`函数。
+
+```js
+computed: {
+   reversedMessage: {
+     get() {
+       return this.message.split("").reverse().join("")
+     },
+     set(val) {
+       this.message = val
+     },
+   }
+ },
+```
+
+### 侦听器
+
+方式一：通过 `watch` 选项来监听数据的变化
+
+```html
+<div id="app">
+  <p>Original message: "{{ message }}"</p>
+  <button @click="set()">更改</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    // 定义数据
+    data: {
+      message: "Hello",
+      obj: {
+        a: 1,
+        b: 100,
+      },
+      name: "Evan Cookie",
+    },
+    // 定义方法
+    methods: {
+      set() {
+        this.message = this.message + "~";
+      },
+    },
+    // 侦听器
+    watch: {
+      // 完整写法
+      message: {
+        immediate: true, // 侦听开始之后被立即调用
+        deep: true, // 开启深度侦听（不管对象嵌套多深）
+        handler(newValue, oldValue) {
+          console.log("message 数据变化了");
+          console.log(newValue, oldValue);
+        },
+      },
+      // 侦听对象的某个属性
+      "obj.a": {
+        handler(newValue, oldValue) {
+          console.log("message 数据变化了");
+          console.log(newValue, oldValue);
+        },
+      },
+      // 不需要immediate, deep 的情况况下 => 可简写
+      name(newValue, oldValue) {
+        console.log("message 数据变化了");
+        console.log(newValue, oldValue);
+      },
+    },
+  });
+</script>
+```
+
+方式二： [实例方法 / 数据 - vm.$watch](https://v2.cn.vuejs.org/v2/api/#vm-watch)
+
+**示例：**
+
+```js
+const vm = new Vue({
+  el: "#app",
+  data: {
+    name: "Evan Cookie",
+    obj: {
+      a: 100,
+      b: 200,
+    },
+  },
+});
+
+vm.$watch("obj.a", function (newValue, oldValue) {
+  console.log(newValue, oldValue);
+});
+
+vm.$watch(
+  "name",
+  function (newValue, oldValue) {
+    console.log(newValue, oldValue);
+  },
+  {
+    deep: true,
+    immediate: true,
+  }
+);
+```
+
+`vm.$watch` 返回一个取消观察函数，用来停止触发回调：
+
+```js
+const unwatch = vm.$watch("obj.b", callback);
+
+// 取消观察
+unwatch();
+```
+
+:::danger
+
+注意在带有 `immediate` 选项时，你不能在第一次回调时取消侦听给定的 property。
+
+带有 `immediate` 不可以 `unwatch()` 取消侦听
+
+:::
 
 ## 2.8 Class 与 Style 绑定
 

@@ -435,9 +435,306 @@ unwatch();
 
 ## 2.8 Class 与 Style 绑定
 
+### 绑定 HTML Class
+
+可以传给 `v-bind:class` 一个对象，以动态地切换 class：
+
+**对象语法**
+
+```html
+<!-- 示例一 -->
+<div v-bind:class="{ active: isActive }"></div>
+
+<!-- 示例二 -->
+<div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+
+<!-- 示例三 -->
+<div v-bind:class="classObj"></div>
+```
+
+如下 data：
+
+```js
+data: {
+  isActive: true,
+  hasError: false,
+  classObj: {
+    active: true,
+    'text-danger': true
+  }
+}
+```
+
+结果渲染为：
+
+```html
+<div class="active"></div>
+
+<div class="static active"></div>
+
+<div class="active text-danger"></div>
+```
+
+**数组语法**
+
+可以把一个数组传给 `v-bind:class`，以应用一个 class 列表：
+
+```html
+<!-- 示例一 -->
+<div v-bind:class="['active', 'text-danger']"></div>
+
+<!-- 示例二 -->
+<div v-bind:class="classArr"></div>
+```
+
+如下 data：
+
+```js
+data: {
+  classArr: ['a', 'b']
+}
+```
+
+结果渲染为：
+
+```html
+<div class="active text-danger"></div>
+
+<div class="a b"></div>
+```
+
+### 绑定内联样式
+
+**对象语法**
+
+`v-bind:style` 的对象语法十分直观——看着非常像 CSS，但其实是一个 JavaScript 对象。CSS property 名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用引号括起来) 来命名：
+
+```html
+<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+```
+
+```js
+data: {
+  activeColor: 'red',
+  fontSize: 30
+}
+```
+
+直接绑定到一个**样式对象**通常更好，这会让模板更清晰：
+
+```html
+<div v-bind:style="styleObj"></div>
+```
+
+```js
+data: {
+  styleObject: {
+    color: 'red',
+    fontSize: '13px'
+  }
+}
+```
+
+**数组语法**
+
+`v-bind:style` 的数组语法可以将多个**样式对象**应用到同一个元素上：
+
+```html
+<div v-bind:style="[baseStyles, overridingStyles]"></div>
+```
+
+```js
+data: {
+  baseStyles: {
+    color: 'red',
+    fontSize: '13px'
+  },
+  overridingStyles: {
+    border: '1px solid #000',
+  }
+}
+```
+
+
+
 ## 2.9 条件渲染
 
+### v-if
+
+`v-if` 指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回 true  值的时候被渲染。
+
+```html
+<h1 v-if="awesome">Vue is awesome!</h1>
+```
+
+ `v-else` 指令来表示 `v-if` 的 "else 块" ：
+
+```html
+<div v-if="awesome">
+  Now you see me
+</div>
+<div v-else>
+  Now you don't
+</div>
+```
+
+`v-else-if`，顾名思义，充当 `v-if` 的 "else-if 块"，可以连续使用：
+
+```html
+<div v-if="type === 'A'">
+  A
+</div>
+<div v-else-if="type === 'B'">
+  B
+</div>
+<div v-else-if="type === 'C'">
+  C
+</div>
+<div v-else>
+  Not A/B/C
+</div>
+```
+
+因为 `v-if` 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 `<template>` 元素当做不可见的包裹元素，并在上面使用 `v-if`。最终的渲染结果将不包含 `<template>` 元素。
+
+```html
+<template v-if="isShow">
+  <h1>Title</h1>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+</template>
+```
+
+
+
+::: warning 注意
+
+类似于 `v-else`，`v-else-if` 也必须紧跟在带 `v-if` 或者 `v-else-if` 的元素之后。
+
+:::
+
+### v-show
+
+用于根据条件展示元素的选项是 `v-show` 指令。用法与 `v-if`大致一样：
+
+```html
+<h1 v-show="isShow">Hello!</h1>
+```
+
+::: warning 与 v-if 的区别
+
+- `v-if` 是“真正”的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。
+- `v-if` 也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。
+- 相比之下，`v-show` 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于  CSS property `display`进行切换。
+- 一般来说，`v-if` 有更高的切换开销，而 `v-show` 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 `v-show` 较好；如果在运行时条件很少改变，则使用 `v-if` 较好。
+
+:::
+
+::: danger
+
+注意，`v-show` 不支持 `<template>` 元素，也不支持 `v-else`。
+
+:::
+
 ## 2.10 列表渲染
+
+### v-for
+
+ `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 `items` 是源数据数组，而 `item` 则是被迭代的数组元素的别名。
+
+```html
+<ul id="list-box-1">
+  <li v-for="item in items" :key="item.message">
+    {{ item.message }}
+  </li>
+</ul>
+```
+
+```js
+const vm = new Vue({
+  el: '#list-box-1',
+  data: {
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
+  }
+})
+```
+
+在 `v-for` 块中，我们可以访问所有父作用域的 property。`v-for` 还支持一个可选的第二个参数，即当前项的索引`index`。
+
+```html
+<ul id="list-box-2">
+  <li v-for="(item, index) in items">
+    {{ item.message }} - {{ index }}
+  </li>
+</ul>
+```
+
+你也可以用 `of` 替代 `in` 作为分隔符，因为它更接近 JavaScript 迭代器的语法：
+
+```html
+<div v-for="item of items"></div>
+```
+
+:::tip 补充
+
+- `v-for`还可以遍历：字符串、指定次数
+
+```html
+<!-- 遍历字符串 -->
+<ul>
+  <li v-for="(item, index) in 'EvanCookie'">
+    {{ item }} - {{ index }}
+  </li>
+</ul>
+
+<!-- 遍历指定次数 -->
+<ul>
+  <li v-for="(item, index) in 5">
+    {{ item }} - {{ index }}
+  </li>
+</ul>
+```
+
+- 为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 `key` attribute：
+
+```html
+<div v-for="item in items" v-bind:key="item.id">
+  <!-- 内容 -->
+</div>
+```
+
+- 建议尽可能在使用 `v-for` 时提供 `key` attribute，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升。因为它是 Vue 识别节点的一个通用机制，`key` 并不仅与 `v-for` 特别关联，它还具有其它用途。
+
+:::
+
+### key的作用与原理
+
+`key` 的特殊 attribute 主要用在 Vue 的虚拟 DOM 算法，在新旧 nodes 对比时辨识 VNodes。如果不使用 key，Vue 会使用一种最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类型元素的算法。而使用 key 时，它会基于 key 的变化重新排列元素顺序，并且会移除 key 不存在的元素。
+
+有相同父元素的子元素必须有**独特的 key**。重复的 key 会造成渲染错误。
+
+**面试题： react 、 vue 中的 key 有什么作用？( key 的内部原理）：**
+
+ key 是虚拟 DOM 对象的标识，当数据发生变化时， Vue 根据【新数据】生成【新虚拟 DOM 】,随后进行【新虚拟 DOM 】与【旧虚拟 DOM 】的差异比较，对比规则如下：
+
+**对比规则：**
+
+1. 旧虚拟 DOM 中找到了与新虚拟 DOM 相同的 key ：若虚拟 DOM 中内容没变，直接使用之前的真实 DOM !
+   若虚拟 DOM 中内容变了，则生成新的真实 DOM ，随后替换掉页面中之前的真实 DOM 。
+2. 旧虚拟 DOM 中未找到与新虚拟 DOM 相同的 key：创建新的真实 DOM ，随后渲染到到页面。
+
+**用 index 作为 key 可能会引发的问题：**
+
+1. 若对数据进行：逆序添加、逆序删除等破坏顺序操作：会产生没有必要的真实 DOM 更新＝=＞界面效果没问题，但效率低。
+2. 如果结构中还包含输入类的 DOM :会产生错误 DOM 更新＝=＞界面有问题。
+
+**开发中如何选择 key ?**
+
+1. 最好使用每条数据的唯一标识作为 key ，比如 id 、手机号、身份证号、学号等唯一值。
+2. 如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用 index 作为 key 是没有问题的。
 
 # 3. 生命周期
 

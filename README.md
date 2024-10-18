@@ -11,7 +11,3 @@
 ![img](./pics/home_white.png)
 
 ![img](./pics/home_dark.png)
-
-## 移动端页面
-
-![img](./pics/m_home.png)

@@ -1,29 +1,57 @@
-// 样式覆盖
+/** vitepress 样式覆盖 **/
 
-/* 首页 Feature部分 - 悬停 */
-.VPHomeFeatures .VPFeature:hover {
+/* 屏幕尺寸 > 1440px */
+@media (min-width: 1440px) {
+  .VPDoc.has-aside .content-container.content-container {
+    max-width: 100% !important;
+  }
+}
+
+/* 首页 Hero 部分  */
+.VPHero {
+  .VPButton.art {
+    border-color: var(--vp-button-alt-border);
+    background-color: var(--vp-button-alt-bg);
+  }
+}
+
+/* 首页 Feature 部分 */
+.VPHomeFeatures .VPFeature {
+  /* 悬停 */
+  &:hover {
     border: 1px solid var(--vp-c-brand-1) !important;
+  }
+
+  /* - 链接文字 */
+  .link-text {
+    color: var(--vp-c-brand-1) !important;
+  }
 }
 
-/* 首页 Feature部分 - 链接文字 */
-.VPHomeFeatures .VPFeature .link-text{
+/* Nav 菜单 */
+.VPNavBarMenu .VPNavBarMenuLink {
+  /* 激活 */
+  .active span {
     color: var(--vp-c-brand-1) !important;
+  }
+
+  /* 悬停 */
+  &:hover span {
+    color: var(--vp-c-brand-1) !important;
+  }
 }
 
-/* Nav菜单 - 激活 */
-.VPNavBarMenu .VPNavBarMenuLink.active span {
-    color: var(--vp-c-brand-1) !important;
-}
-/* Nav菜单 - 悬停 */
-.VPNavBarMenu .VPNavBarMenuLink:hover span {
-    color: var(--vp-c-brand-1) !important;
-}
+/* sidBarNav */
+.VPSidebarItem {
+  .items {
+    /* 激活 */
+    .is-active {
+      color: var(--vp-c-brand-1) !important;
+    }
 
-/* sidBarNav - 激活*/
-.VPSidebarItem .items .is-active {
-    color: var(--vp-c-brand-1) !important;
-}
-/* sidBarNav - 悬停*/
-.VPSidebarItem .items .is-link:hover {
-    color: var(--vp-c-brand-1) !important;
+    /* 悬停 */
+    .is-link:hover {
+      color: var(--vp-c-brand-1) !important;
+    }
+  }
 }

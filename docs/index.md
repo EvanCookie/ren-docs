@@ -13,9 +13,15 @@ hero:
     - theme: brand
       text: 开始阅读
       link: /other/cross_domain
-    - theme: alt
+    - theme: art
+      text: 工具导航
+      link: /tools-nav/index
+    - theme: brand
       text: GitHub
       link: https://github.com/EvanCookie/ren-docs
+    - theme: art
+      text: RenMusic
+      link: https://vue3.music.evancookie.cn/
 
 features:
   - icon: 🛠️
@@ -31,5 +37,5 @@ features:
   - icon: 🧑‍💻
     title: 关于我
     details: 一个正在上学的菜鸟......
-    link: 
+    link:
 ---

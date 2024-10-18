@@ -1,16 +1,18 @@
 ---
-layout: page
+layoutClass: m-nav-layout
 outline: [2, 3, 4]
 ---
 
 <script setup>
-
+import Nav from './nav/Nav.vue'
 </script>
 
-## Docs
+# 工具导航
 
-This is a .md using a custom component
+::: info 导航说明
 
-## More docs
+- 本页面记录个人学习前端过程中使用过或遇到的类库
 
-...
+:::
+
+<Nav/>

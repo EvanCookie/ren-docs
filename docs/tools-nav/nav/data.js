@@ -1,5 +1,152 @@
 export const NAV_DATA = [
   {
+    title: '常用工具',
+    items: [
+      {
+        icon: 'https://caniuse.com/img/favicon-128.png',
+        title: 'Can I use',
+        desc: '前端 API 兼容性查询',
+        link: 'https://caniuse.com'
+      },
+      {
+        icon: 'https://squoosh.app/c/favicon-c9cf50ef.ico',
+        title: 'Squoosh',
+        desc: '基于浏览器的本地图片压缩工具（支持自定义参数和格式转换）',
+        link: 'https://squoosh.app/'
+      },
+      {
+        icon: 'https://tinypng.com/images/apple-touch-icon.png',
+        title: 'TinyPNG',
+        desc: '在线图片压缩工具',
+        link: 'https://tinypng.com'
+      },
+      {
+        icon: 'https://carbon.now.sh/static/brand/icon.png',
+        title: 'Carbon',
+        desc: '代码图片生成',
+        link: 'https://carbon.now.sh'
+      },
+      {
+        icon: 'https://npm.devtool.tech/logo.svg',
+        title: 'npm 库在线执行',
+        desc: '在浏览器控制台中在线运行调试与测试 npm 中的库',
+        link: 'https://npm.devtool.tech'
+      },
+      {
+        icon: 'https://devtool.tech/logo.svg',
+        title: '开发者武器库',
+        desc: '开发者武器库，做开发者最专业最好用的专业工具箱',
+        link: 'https://devtool.tech'
+      },
+      {
+        icon: 'https://tool.lu/favicon.ico',
+        title: '在线工具',
+        desc: '开发人员的工具箱',
+        link: 'https://tool.lu'
+      },
+      {
+        icon: 'https://static.json.cn/r/img/favicon/favicon.ico',
+        title: 'Json.cn',
+        desc: 'JSON在线解析及格式化验证 - JSON.cn',
+        link: 'https://www.json.cn'
+      },
+      {
+        icon: 'https://transform.tools/static/favicon.png',
+        title: 'transform',
+        desc: '一个支持多语言的在线转换器',
+        link: 'https://transform.tools/json-schema-to-typescript'
+      },
+      {
+        icon: 'https://shields.io/img/favicon.ico',
+        title: 'shields.io',
+        desc: '制作简洁、一致、易读的徽章',
+        link: 'https://shields.io/'
+      },
+      {
+        icon: 'https://excalidraw.com/apple-touch-icon.png',
+        title: 'Excalidraw',
+        desc: '手绘风格流程图',
+        link: 'https://excalidraw.com/'
+      },
+      {
+        icon: 'https://www.drawio.com/favicon.ico',
+        title: 'Draw.io',
+        desc: 'Draw.io 是一个用于构建图表应用程序的技术堆栈，也是世界上使用最广泛的基于浏览器的最终用户图表软件。',
+        link: 'https://app.diagrams.net/?src=about'
+      },
+      {
+        icon: 'https://www.processon.com/public_login/favicon.983368c6.ico',
+        title: 'ProcessOn',
+        desc: '免费在线流程图、思维导图',
+        link: 'https://www.processon.com/'
+      },
+    ]
+  },
+  {
+    title: 'Git 相关',
+    items: [
+      {
+        icon: 'https://github.githubassets.com/favicons/favicon.svg',
+        title: 'Github',
+        desc: 'GitHub 是一个面向开源及私有软件项目的托管平台。',
+        link: 'https://github.com/'
+      },
+      {
+        icon: 'https://about.gitlab.com/nuxt-images/ico/favicon.ico',
+        title: 'GitLab',
+        desc: 'GitLab - 项目管理和代码托管平台',
+        link: 'https://gitlab.com'
+      },
+      {
+        icon: 'https://gitee.com/favicon.ico',
+        title: 'Gitee',
+        desc: 'Gitee - 基于 Git 的代码托管和研发协作平台',
+        link: 'https://gitee.com/'
+      },
+      {
+        icon: 'https://pic.imgdb.cn/item/67134b58d29ded1a8c28775b.png',
+        title: 'GitCode',
+        desc: 'GitCode - 全球开发者的开源社区,开源代码托管平台',
+        link: 'https://gitcode.com/'
+      },
+    ]
+  },
+  {
+    title: 'AI 导航',
+    items: [
+      {
+        icon: 'https://cdn.oaistatic.com/assets/favicon-o20kmmos.svg',
+        title: 'ChatGPT',
+        link: 'https://chatgpt.com/'
+      },
+      {
+        icon: 'https://cdn.oaistatic.com/assets/favicon-o20kmmos.svg',
+        title: 'ChatGPT 镜像站点列表',
+        link: 'https://github.com/xx025/carrot'
+      },
+      {
+        icon: 'https://nlp-eb.cdn.bcebos.com/static/eb/asset/logo.8a6b508d.png',
+        title: '文心一言（文小言）',
+        link: 'https://yiyan.baidu.com/',
+      },
+      {
+        icon: 'https://img.alicdn.com/imgextra/i1/O1CN01asLYeX1WhbsyEZn5u_!!6000000002820-55-tps-56-56.svg',
+        title: '通义千问',
+        link: 'https://tongyi.aliyun.com/'
+      },
+      {
+        icon: 'https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/web/static/image/logo-icon-white-bg.f3acc228.png',
+        title: '豆包',
+        link: 'https://www.doubao.com/chat/'
+      },
+      {
+        icon: 'https://statics.moonshot.cn/kimi-chat/favicon.ico',
+        title: 'Kimi.ai',
+        link: 'https://kimi.moonshot.cn/'
+      }
+    ]
+  },
+  {
     title: 'Vue 生态',
     items: [
       {
@@ -57,10 +204,10 @@ export const NAV_DATA = [
         link: 'https://element-plus.org'
       },
       {
-        icon: 'https://www.antdv.com/assets/logo.1ef800a8.svg',
-        title: 'Ant Design Vue',
-        desc: 'Ant Design 的 Vue 实现，开发和服务于企业级后台产品',
-        link: 'https://antdv.com'
+        icon: 'https://cdn.quasar.dev/logo-v2/favicon/favicon.ico',
+        title: 'Quasar',
+        desc: '适用于企业的跨平台 Vue.Js 框架',
+        link: 'https://quasar.dev/'
       },
       {
         icon: 'https://file.iviewui.com/view-design-logo.png',
@@ -73,6 +220,12 @@ export const NAV_DATA = [
         title: 'Vuetify',
         desc: '是一个基于Material Design的 Vue 组件库',
         link: 'https://vuetifyjs.com/zh-Hans/'
+      },
+      {
+        icon: 'https://www.naiveui.com/assets/naivelogo-BdDVTUmz.svg',
+        title: 'Naive ui',
+        desc: '一个 Vue 3 组件库比较完整，主题可调，使用 TypeScript，快有点意思',
+        link: 'https://www.naiveui.com/'
       },
       {
         icon: 'https://fastly.jsdelivr.net/npm/@vant/assets/logo.png',
@@ -91,12 +244,6 @@ export const NAV_DATA = [
         title: 'NutUI',
         desc: '京东风格的轻量级移动端组件库',
         link: 'https://nutui.jd.com'
-      },
-      {
-        icon: 'https://www.uviewui.com/common/logo.png',
-        title: 'uView UI',
-        desc: 'uView UI，是全面兼容nvue的uni-app生态框架',
-        link: 'https://www.uviewui.com/'
       }
     ]
   },
@@ -247,6 +394,12 @@ export const NAV_DATA = [
         link: 'https://swc.rs'
       },
       {
+        icon: 'https://gulpjs.com/img/favicon.png',
+        title: 'Gulp',
+        desc: '用于自动化和增强您的工作流程的工具包，利用 gulp 和 JavaScript 的灵活性来自动执行缓慢、重复的工作流程，并将其组合成高效的构建管道.',
+        link: 'https://gulpjs.com/'
+      },
+      {
         icon: 'https://swc.rs/favicon/apple-touch-icon.png',
         title: 'SWC',
         desc: 'SWC 是一个可扩展的 Rust 平台，适用于下一代快速开发工具。Next.js、Parcel 和 Deno 等工具以及 Vercel、字节跳动、腾讯、Shopify 等公司都在使用它。',
@@ -282,7 +435,7 @@ export const NAV_DATA = [
         link: 'https://stylus-lang.com/'
       },
       {
-        icon: 'https://tailwindcss.com/favicons/favicon.ico?v=3',
+        icon: 'https://tailwindcss.com/favicons/favicon.ico',
         title: 'Tailwind CSS',
         desc: '一个功能类优先的 CSS 框架',
         link: 'https://tailwindcss.com/'
@@ -314,6 +467,165 @@ export const NAV_DATA = [
     ]
   },
   {
+    title: '静态站点生成器',
+    items: [
+      {
+        icon: 'https://astro.build/favicon.svg',
+        title: 'Astro',
+        desc: 'Astro 是一个 JS 开源框架，支持静态站点生成，针对构建快速、内容驱动的网站进行了优化。',
+        link: 'https://astro.build'
+      },
+      {
+        icon: 'https://vuepress.vuejs.org/images/hero.png',
+        title: 'VuePress',
+        desc: 'Vue 驱动的静态网站生成器',
+        link: 'https://vuepress.vuejs.org/zh'
+      },
+      {
+        icon: 'https://vitepress.dev/vitepress-logo-mini.svg',
+        title: 'VitePress',
+        desc: '由 Vite 和 Vue 驱动的静态站点生成器',
+        link: 'https://vitepress.dev'
+      },
+      {
+        icon: 'https://gw.alipayobjects.com/zos/bmw-prod/d3e3eb39-1cd7-4aa5-827c-877deced6b7e/lalxt4g3_w256_h256.png',
+        title: 'dumi',
+        desc: 'dumi 中文发音嘟米，为组件研发而生的静态站点框架',
+        link: 'https://d.umijs.org'
+      },
+      {
+        icon: 'https://docusaurus.io/zh-CN/img/docusaurus.svg',
+        title: 'Docusaurus',
+        desc: '基于 React 的静态网站生成器，快速构建以内容为核心的最佳网站',
+        link: 'https://docusaurus.io/zh-CN'
+      },
+      {
+        icon: 'https://hexo.io/logo.svg',
+        title: 'Hexo',
+        desc: '快速、简洁且高效的博客框架',
+        link: 'https://hexo.io/zh-cn/'
+      },
+      {
+        icon: 'https://jekyllrb.com/img/logo-2x.png',
+        title: 'Jekyll',
+        desc: '将纯文本转换为静态网站和博客。',
+        link: 'https://jekyllrb.com/'
+      },
+      {
+        icon: 'https://gohugo.io/favicon-32x32.png',
+        title: 'Hugo',
+        desc: 'Hugo 是一个用Go编写的静态网站生成器，针对速度进行了优化，并设计了灵活性。可以在几秒钟内（通常更短）呈现完整的网站。',
+        link: 'https://gohugo.io/'
+      },
+      {
+        icon: 'https://www.11ty.dev/img/favicon.png',
+        title: 'Eleventy',
+        desc: 'Eleventy 简称 11ty，是一个更简单的静态站点生成器',
+        link: 'https://www.11ty.dev/'
+      },
+      {
+        icon: 'https://www.gatsbyjs.com/icons/icon-144x144.png',
+        title: 'Gatsby',
+        desc: 'Gatsby 是一个基于 React 的免费、开源框架，用于帮助 开发者构建运行速度极快的 网站 和 应用程序',
+        link: 'https://www.gatsbyjs.com/'
+      },
+    ]
+  },
+  {
+    title: '站点托管平台',
+    items: [
+      {
+        icon: 'https://assets.vercel.com/image/upload/front/favicon/vercel/favicon.ico',
+        title: 'Vercel',
+        desc: '‌‌Vercel是一个云平台，用于构建、部署和扩展无服务器应用程序和静态网站。',
+        link: 'https://vercel.com/'
+      },
+      {
+        icon: 'https://www.netlify.com/favicon/icon.svg',
+        title: 'Netlify',
+        desc: 'Netlify 是一家位于旧金山的云计算公司，为 Web 应用程序和静态网站提供托管和无服务后端服务。',
+        link: 'https://www.netlify.com/'
+      },
+      {
+        icon: 'https://cdn.sanity.io/images/hvk0tap5/production/0ea63c1b6854bd803489557afb4ea54b85239418-128x128.png',
+        title: 'Render',
+        desc: 'Render是一款卓越的云平台（Cloud Platform），专注于简化应用程序的部署和管理，帮助开发人员高效地构建和扩展应用程序。',
+        link: 'https://render.com/'
+      },
+      {
+        icon: 'https://kinsta.com/wp-content/uploads/2024/09/cropped-Kinsta-black-favicon-1-32x32.png',
+        title: 'Kinsta',
+        desc: 'Managed WordPress Hosting Kinsta is an extension of your business. Fast, secure, feature-rich hosting that makes your work so much easier. Built for WordPress websites and agencies worldwide.',
+        link: 'https://kinsta.com/'
+      },
+      {
+        icon: 'https://www.stormkit.io/stormkit-logo.png',
+        title: 'Stormkit',
+        desc: 'Scalable and Cost Effective Frontend Hosting A fully-featured, powerful, and self-hostable platform for deploying frontend applications. Take control over your infrastructure.',
+        link: 'https://www.stormkit.io/'
+      },
+      {
+        icon: 'https://surge.sh/images/logos/svg/surge-logo.svg',
+        title: 'Surge',
+        desc: 'Static web publishing for Front-End Developers. Simple, single-command web publishing. Publish HTML, CSS, and JS for free, without leaving the command line.',
+        link: 'https://surge.sh/'
+      },
+      {
+        icon: 'https://pages.github.com/favicon.ico',
+        title: 'Github Pages',
+        desc: '‌GitHub Pages 是通过 GitHub Enterprise Cloud 托管和发布的公共网页。',
+        link: 'https://pages.github.com/'
+      },
+      {
+        icon: 'https://pages.cloudflare.com/favicon.ico',
+        title: 'Cloudflare Pages',
+        desc: 'Cloudflare Pages 是一个 JAMstack 平台，供前端开发人员协作和部署网站。',
+        link: 'https://pages.cloudflare.com/'
+      },
+    ]
+  },
+  {
+    title: '小程序相关',
+    items: [
+      {
+        icon: 'https://res.wx.qq.com/a/wx_fed/assets/res/OTE0YTAw.png',
+        title: '微信小程序文档',
+        desc: '微信 小程序官方开发者文档',
+        link: 'https://developers.weixin.qq.com/miniprogram/dev/framework/'
+      },
+      {
+        icon: 'https://q.qq.com/wiki/favicon.ico',
+        title: 'QQ小程序文档',
+        desc: 'QQ 小程序官方开发者文档',
+        link: 'https://q.qq.com/wiki/'
+      },
+      {
+        icon: 'https://img.alicdn.com/tfs/TB1qEwuzrj1gK0jSZFOXXc7GpXa-32-32.ico',
+        title: '支付宝小程序文档',
+        desc: '支付宝 小程序官方开发者文档',
+        link: 'https://opendoc.alipay.com/mini/'
+      },
+      {
+        icon: 'https://lf-developer-cdn.open-douyin.com/obj/open-platform-scm/open/platform/docs/favicon.ico',
+        title: '抖音小程序文档',
+        desc: '抖音 小程序官方开发者文档',
+        link: 'https://developer.open-douyin.com/docs/resource/zh-CN/mini-app/introduction/usage-guide'
+      },
+      {
+        icon: 'https://www.xiaohongshu.com/favicon.ico',
+        title: '小红书小程序文档',
+        desc: '小红书 小程序官方开发者文档',
+        link: 'https://miniapp.xiaohongshu.com/docs?path=/docs/guide/miniIntroduce'
+      },
+      {
+        icon: 'https://w3.kskwai.com/udata/pkg/frontend-explore/kwai_icon.4bc73d17.ico',
+        title: '快手小程序文档',
+        desc: '快手 小程序官方开发者文档',
+        link: 'https://mp.kuaishou.com/docs/develop/guide/introduction.html'
+      },
+    ]
+  },
+  {
     title: '跨平台',
     items: [
       {
@@ -331,14 +643,32 @@ export const NAV_DATA = [
       {
         icon: 'https://web-assets.dcloud.net.cn/unidoc/zh/icon.png',
         title: 'uni-app',
-        desc: '一个使用 Vue.js 开发所有前端应用的框架',
+        desc: '编写一套代码，可发布到iOS、Android、Web（响应式）、以及各种小程序（微信/支付宝/百度/头条/飞书/QQ/快手/钉钉/淘宝）、快应用等多个平台。',
         link: 'https://uniapp.dcloud.net.cn'
+      },
+      {
+        icon: 'https://docs.taro.zone/img/taro-logo_180.png',
+        title: 'Taro',
+        desc: 'Taro 是一个开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发 微信 / 京东 / 百度 / 支付宝 / 字节跳动 / QQ / 飞书 / 快手 小程序 / H5 / RN 等应用。',
+        link: 'https://docs.taro.zone/docs/'
       },
       {
         icon: 'https://mpxjs.cn/favicon.ico',
         title: 'Mpx',
-        desc: '增强型跨端小程序框架',
+        desc: '增强型跨端小程序框架，一份源码跨端输出所有小程序平台及Web。',
         link: 'https://mpxjs.cn'
+      },
+      {
+        icon: 'https://www.uviewui.com/common/logo.png',
+        title: 'uView UI',
+        desc: 'uView UI，是全面兼容nvue的uni-app生态框架',
+        link: 'https://www.uviewui.com/'
+      },
+      {
+        icon: 'https://tmui.tmui.design/images/logoGreat.png',
+        title: 'tmui',
+        desc: 'Uni App 通用组件库跨端组件库 微信小程序、H5、APP-VUE、APP-NVUE等',
+        link: 'https://tmui.tmui.design/'
       }
     ]
   },
@@ -413,17 +743,17 @@ export const NAV_DATA = [
       {
         icon: 'https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg',
         title: 'iconfont',
-        desc: '国内功能很强大且图标内容很丰富的矢量图标库，提供矢量图标下载、在线存储、格式转换等功能',
+        desc: '阿里图标库，国内功能很强大且图标内容很丰富的矢量图标库，提供矢量图标下载、在线存储、格式转换等功能',
         link: 'https://www.iconfont.cn'
       },
       {
         icon: 'https://lf1-cdn2-tos.bytegoofy.com/bydesign/iconparksite/logo.svg',
-        title: 'IconPark 图标库',
+        title: 'IconPark',
         desc: 'IconPark图标库是一个通过技术驱动矢量图标样式的开源图标库，可以实现根据单一 SVG 源文件变换出多种主题， 具备丰富的分类、更轻量的代码和更灵活的使用场景；致力于构建高质量、统一化、可定义的图标资源，让大多数人都能够选择适合自己的风格图标',
         link: 'https://iconpark.oceanengine.com/official'
       },
       {
-        icon: '',
+        icon: 'https://iconify.design/favicon.svg',
         title: 'Iconify',
         desc: '一个开源的图标集合和图标工具',
         link: 'https://iconify.design'
@@ -435,9 +765,9 @@ export const NAV_DATA = [
         link: 'https://icones.js.org'
       },
       {
-        icon: '',
+        icon: 'https://simpleicons.org/images/favicon.png',
         title: 'Simple Icons',
-        desc: '包含 2457 种流行品牌的免费 SVG 图标库',
+        desc: '包含上种流行品牌的免费 SVG 图标库',
         link: 'https://simpleicons.org'
       },
       {
@@ -457,41 +787,6 @@ export const NAV_DATA = [
         title: 'gitmoji',
         desc: '可以在 git 中使用的 emoji 表情',
         link: 'https://gitmoji.dev'
-      }
-    ]
-  },
-  {
-    title: 'AI 导航',
-    items: [
-      {
-        icon: 'https://cdn.oaistatic.com/assets/favicon-o20kmmos.svg',
-        title: 'ChatGPT',
-        link: 'https://chatgpt.com/'
-      },
-      {
-        icon: 'https://cdn.oaistatic.com/assets/favicon-o20kmmos.svg',
-        title: 'ChatGPT 镜像站点列表',
-        link: 'https://github.com/xx025/carrot'
-      },
-      {
-        icon: 'https://nlp-eb.cdn.bcebos.com/static/eb/asset/logo.8a6b508d.png',
-        title: '文心一言（文小言）',
-        link: 'https://yiyan.baidu.com/',
-      },
-      {
-        icon: 'https://img.alicdn.com/imgextra/i1/O1CN01asLYeX1WhbsyEZn5u_!!6000000002820-55-tps-56-56.svg',
-        title: '通义千问',
-        link: 'https://tongyi.aliyun.com/'
-      },
-      {
-        icon: 'https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/web/static/image/logo-icon-white-bg.f3acc228.png',
-        title: '豆包',
-        link: 'https://www.doubao.com/chat/'
-      },
-      {
-        icon: 'https://statics.moonshot.cn/kimi-chat/favicon.ico',
-        title: 'Kimi.ai',
-        link: 'https://kimi.moonshot.cn/'
       }
     ]
   },

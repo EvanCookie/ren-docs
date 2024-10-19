@@ -47,8 +47,7 @@ const svg = computed(() => {
     <article class="box">
       <div class="box-header">
         <template v-if="!props.noIcon">
-          <div v-if="svg" class="icon" v-html="svg"></div>
-          <div v-else-if="props.icon && typeof props.icon === 'string'" class="icon">
+          <div v-if="props.icon" class="icon">
             <img
               :src="withBase(props.icon)"
               loading="lazy"
@@ -56,7 +55,7 @@ const svg = computed(() => {
             />
           </div>
         </template>
-        <h5 v-if="title" :id="formatTitle" class="title" :class="{ 'no-icon': props.noIcon }">
+        <h5 v-if="title" :id="formatTitle" class="title">
           {{ props.title }}
         </h5>
       </div>

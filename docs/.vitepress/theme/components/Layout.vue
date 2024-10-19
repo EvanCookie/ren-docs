@@ -1,61 +1,62 @@
 <!-- .vitepress/theme/components/Layout.vue -->
 <script setup>
-import { useData } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import { nextTick, provide } from 'vue'
-const { isDark } = useData()
+import { useData } from "vitepress";
+import DefaultTheme from "vitepress/theme";
+import { nextTick, provide } from "vue";
+const { isDark } = useData();
+const { Layout } = DefaultTheme;
 
-// 添加一个新的函数来判断是否是PC端
-const isPC = () => window.matchMedia('(min-width: 769px)').matches;
+// Determine whether it is a pc
+const isPC = () => window.matchMedia("(min-width: 769px)").matches;
 
-// 检查是否启用过渡效果的函数
+// Check Whether to enable Transitions
 const enableTransitions = () =>
-  'startViewTransition' in document &&
-  window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+  "startViewTransition" in document &&
+  window.matchMedia("(prefers-reduced-motion: no-preference)").matches &&
   isPC();
 
-// 提供toggle-appearance功能，用于切换暗黑模式
-provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
-  // 如果不支持 startViewTransition，则直接切换
+// Toggle appearance function
+provide("toggle-appearance", async ({ clientX: x, clientY: y }) => {
+  // startViewTransition direct switch over is not supported
   if (!enableTransitions()) {
-    // 切换暗黑模式
     isDark.value = !isDark.value;
     return;
   }
 
-  // 计算动画的最大半径，基于鼠标点击位置和窗口大小
+  // Calculate the maximum radius of the animation
   const maxRadius = Math.hypot(
     Math.max(x, innerWidth - x),
     Math.max(y, innerHeight - y)
   );
 
-  // 定义clip-path的起点和终点，用于圆形扩展动画
+  // Define the start and end of clip-path
   const clipPath = [
     `circle(0px at ${x}px ${y}px)`,
-    `circle(${maxRadius}px at ${x}px ${y}px)`
+    `circle(${maxRadius}px at ${x}px ${y}px)`,
   ];
 
-  // 如果浏览器支持startViewTransition API，则使用此API进行过渡效果
+  // Supports the startViewTransition API, which is used for transition effects
   await document.startViewTransition(async () => {
-    isDark.value = !isDark.value; // 切换暗黑模式
-    await nextTick(); // 等待DOM更新
+    isDark.value = !isDark.value;
+
+    // Waiting for DOM updates
+    await nextTick();
   }).ready;
 
-  // 使用clip-path创建过渡动画效果
+  // Use clip-path to create a transition animation
   document.documentElement.animate(
     { clipPath: isDark.value ? clipPath.reverse() : clipPath },
     {
       duration: 300,
-      easing: 'ease-in',
-      pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`
+      easing: "ease-in",
+      pseudoElement: `::view-transition-${isDark.value ? "old" : "new"}(root)`,
     }
   );
 });
-
 </script>
 
 <template>
-  <DefaultTheme.Layout />
+  <Layout v-bind="$attrs"></Layout>
 </template>
 
 <style>
@@ -79,12 +80,12 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   z-index: 9999;
 }
 
-/* 按钮的基础样式 */
+/* Toggle button style */
 .VPSwitchAppearance {
   width: 40px !important;
 }
 
 .VPSwitchAppearance .check {
-  left: 2px;
+  left: 1px !important;
 }
 </style>

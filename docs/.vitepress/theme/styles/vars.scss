@@ -15,7 +15,7 @@
   --vp-code-copy-code-hover-bg: rgb(125 125 125 / 0.2);
   --vp-c-disabled-bg: rgb(125 125 125 / 0.2);
   --vp-code-tab-text-color: var(--vp-c-text-2);
-  --vp-code-tab-active-text-color: var(--vp-c-brand-1);
+  --vp-code-tab-active-text-color: var(--vp-c-text-1);
   --vp-code-tab-hover-text-color: var(--vp-c-text-1);
   --vp-code-copy-code-active-text: var(--vp-c-text-2);
   --vp-c-text-dark-3: rgb(56 56 56 / 0.8);
@@ -87,17 +87,17 @@
  * Component: Custom Block
  * -------------------------------------------------------------------------- */
 
-// :root {
-//   --vp-custom-block-tip-border: var(--vp-c-brand-1);
-//   --vp-custom-block-tip-text: var(--vp-c-brand-darker);
-//   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
-// }
+:root {
+  --vp-custom-block-tip-border: var(--vp-c-brand-1);
+  --vp-custom-block-tip-text: var(--vp-c-brand-darker);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+}
 
-// .dark {
-//   --vp-custom-block-tip-border: var(--vp-c-brand-1);
-//   --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
-//   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
-// }
+.dark {
+  --vp-custom-block-tip-border: var(--vp-c-brand-1);
+  --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+}
 
 /**
  * Component: Algolia

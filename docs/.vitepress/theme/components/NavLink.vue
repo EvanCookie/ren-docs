@@ -1,60 +1,42 @@
 <script setup>
-import { computed } from 'vue'
-import { withBase } from 'vitepress'
-import { slugify } from '@mdit-vue/shared'
+import { defineProps, computed } from "vue";
+import { withBase } from "vitepress";
+import { slugify } from "@mdit-vue/shared";
 
 const props = defineProps({
-  noIcon: {
-    type: Boolean,
-    default: false
-  },
   icon: {
-    type: [Object, String],
-    default: null
+    type: String,
+    default: "",
   },
   title: {
     type: String,
-    default: ''
+    default: "",
   },
   desc: {
     type: String,
-    default: ''
+    default: "",
   },
   link: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const formatTitle = computed(() => {
-  if (!props.title) return ''
-  return slugify(props.title)
-})
-
-const svg = computed(() => {
-  if (typeof props.icon === 'object') return props.icon
-  return ''
-})
+const formatTitle = computed(() => (!props.title ? "" : slugify(props.title)));
 </script>
 
 <template>
-  <a
-    v-if="link"
-    class="m-nav-link"
-    :href="link"
-    target="_blank"
-  >
+  <a v-if="link" class="m-nav-link" :href="link" target="_blank">
     <article class="box">
       <div class="box-header">
-        <template v-if="!props.noIcon">
-          <div v-if="props.icon" class="icon">
-            <img
-              :src="withBase(props.icon)"
-              loading="lazy"
-              onerror="this.parentElement.style.display='none'"
-            />
-          </div>
-        </template>
+        <div v-if="props.icon" class="icon">
+          <img
+            :src="withBase(props.icon)"
+            loading="lazy"
+            onerror="this.parentElement.style.display='none'"
+          />
+        </div>
+
         <h5 v-if="title" :id="formatTitle" class="title">
           {{ props.title }}
         </h5>

@@ -5,6 +5,7 @@
 - [Vite](https://cn.vitejs.dev/) 是一种新型前端构建工具
 
 ## 框架官网
+
 - [Vue2](https://v2.cn.vuejs.org/) 渐进式 JavaScript 框架
 
 - [Vue3](https://cn.vuejs.org/) 渐进式 JavaScript 框架
@@ -12,6 +13,7 @@
 - [Nuxt.js](https://nuxt.com/) 一个基于Vue.js 的通用应用框架
 
 ## 路由
+
 - [Vue Router](https://router.vuejs.org/zh/) Vue.js 的官方路由
 
 ## 状态管理
@@ -51,7 +53,3 @@
 - [Bootstrap](https://www.bootcss.com/) 是美国Twitter公司，基于HTML、CSS、JavaScript 开发的简洁、直观、强悍的前端开发框架
 
 - [Tailwind css](https://www.tailwindcss.cn/) 只需书写 HTML 代码，无需书写 CSS，即可快速构建美观的网站。
-
-
-
-

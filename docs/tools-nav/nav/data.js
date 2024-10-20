@@ -79,7 +79,7 @@ export const NAV_DATA = [
         title: 'ProcessOn',
         desc: '免费在线流程图、思维导图',
         link: 'https://www.processon.com/'
-      },
+      }
     ]
   },
   {
@@ -108,7 +108,7 @@ export const NAV_DATA = [
         title: 'GitCode',
         desc: 'GitCode - 全球开发者的开源社区,开源代码托管平台',
         link: 'https://gitcode.com/'
-      },
+      }
     ]
   },
   {
@@ -127,7 +127,7 @@ export const NAV_DATA = [
       {
         icon: 'https://nlp-eb.cdn.bcebos.com/static/eb/asset/logo.8a6b508d.png',
         title: '文心一言（文小言）',
-        link: 'https://yiyan.baidu.com/',
+        link: 'https://yiyan.baidu.com/'
       },
       {
         icon: 'https://img.alicdn.com/imgextra/i1/O1CN01asLYeX1WhbsyEZn5u_!!6000000002820-55-tps-56-56.svg',
@@ -528,7 +528,7 @@ export const NAV_DATA = [
         title: 'Gatsby',
         desc: 'Gatsby 是一个基于 React 的免费、开源框架，用于帮助 开发者构建运行速度极快的 网站 和 应用程序',
         link: 'https://www.gatsbyjs.com/'
-      },
+      }
     ]
   },
   {
@@ -581,7 +581,7 @@ export const NAV_DATA = [
         title: 'Cloudflare Pages',
         desc: 'Cloudflare Pages 是一个 JAMstack 平台，供前端开发人员协作和部署网站。',
         link: 'https://pages.cloudflare.com/'
-      },
+      }
     ]
   },
   {
@@ -622,7 +622,7 @@ export const NAV_DATA = [
         title: '快手小程序文档',
         desc: '快手 小程序官方开发者文档',
         link: 'https://mp.kuaishou.com/docs/develop/guide/introduction.html'
-      },
+      }
     ]
   },
   {
@@ -734,7 +734,7 @@ export const NAV_DATA = [
         title: 'Bun',
         desc: 'Bun 是一个全新的 JavaScript 运行时，旨在成为‌Node.js的更快、更精简、更现代的替代品。',
         link: 'https://bun.sh/'
-      },
+      }
     ]
   },
   {
@@ -789,5 +789,5 @@ export const NAV_DATA = [
         link: 'https://gitmoji.dev'
       }
     ]
-  },
+  }
 ]

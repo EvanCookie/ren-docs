@@ -1,28 +1,28 @@
 <script setup>
-import { defineProps, computed } from "vue";
-import { withBase } from "vitepress";
-import { slugify } from "@mdit-vue/shared";
+import { defineProps, computed } from 'vue'
+import { withBase } from 'vitepress'
+import { slugify } from '@mdit-vue/shared'
 
 const props = defineProps({
   icon: {
     type: String,
-    default: "",
+    default: ''
   },
   title: {
     type: String,
-    default: "",
+    default: ''
   },
   desc: {
     type: String,
-    default: "",
+    default: ''
   },
   link: {
     type: String,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
-const formatTitle = computed(() => (!props.title ? "" : slugify(props.title)));
+const formatTitle = computed(() => (!props.title ? '' : slugify(props.title)))
 </script>
 
 <template>

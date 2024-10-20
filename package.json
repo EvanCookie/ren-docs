@@ -8,16 +8,27 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "start": "vitepress dev docs"
+    "start": "vitepress dev docs",
+    "format": "prettier --write \"**/*.{js,vue,json}\"",
+    "lint-staged": "lint-staged",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@mdit-vue/shared": "^2.1.3",
     "cz-customizable": "^7.2.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
     "vitepress": "^1.3.1"
   },
   "dependencies": {
     "sass": "^1.77.8",
     "vue": "^3.4.35"
+  },
+  "lint-staged": {
+    "*.{js,vue,json}": [
+      "prettier --write"
+    ]
   },
   "config": {
     "commitizen": {

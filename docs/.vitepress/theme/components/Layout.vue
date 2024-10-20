@@ -1,58 +1,58 @@
 <!-- .vitepress/theme/components/Layout.vue -->
 <script setup>
-import { useData } from "vitepress";
-import DefaultTheme from "vitepress/theme";
-import { nextTick, provide } from "vue";
-const { isDark } = useData();
-const { Layout } = DefaultTheme;
+import { useData } from 'vitepress'
+import DefaultTheme from 'vitepress/theme'
+import { nextTick, provide } from 'vue'
+const { isDark } = useData()
+const { Layout } = DefaultTheme
 
 // Determine whether it is a pc
-const isPC = () => window.matchMedia("(min-width: 769px)").matches;
+const isPC = () => window.matchMedia('(min-width: 769px)').matches
 
 // Check Whether to enable Transitions
 const enableTransitions = () =>
-  "startViewTransition" in document &&
-  window.matchMedia("(prefers-reduced-motion: no-preference)").matches &&
-  isPC();
+  'startViewTransition' in document &&
+  window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+  isPC()
 
 // Toggle appearance function
-provide("toggle-appearance", async ({ clientX: x, clientY: y }) => {
+provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
   // startViewTransition direct switch over is not supported
   if (!enableTransitions()) {
-    isDark.value = !isDark.value;
-    return;
+    isDark.value = !isDark.value
+    return
   }
 
   // Calculate the maximum radius of the animation
   const maxRadius = Math.hypot(
     Math.max(x, innerWidth - x),
     Math.max(y, innerHeight - y)
-  );
+  )
 
   // Define the start and end of clip-path
   const clipPath = [
     `circle(0px at ${x}px ${y}px)`,
-    `circle(${maxRadius}px at ${x}px ${y}px)`,
-  ];
+    `circle(${maxRadius}px at ${x}px ${y}px)`
+  ]
 
   // Supports the startViewTransition API, which is used for transition effects
   await document.startViewTransition(async () => {
-    isDark.value = !isDark.value;
+    isDark.value = !isDark.value
 
     // Waiting for DOM updates
-    await nextTick();
-  }).ready;
+    await nextTick()
+  }).ready
 
   // Use clip-path to create a transition animation
   document.documentElement.animate(
     { clipPath: isDark.value ? clipPath.reverse() : clipPath },
     {
       duration: 300,
-      easing: "ease-in",
-      pseudoElement: `::view-transition-${isDark.value ? "old" : "new"}(root)`,
+      easing: 'ease-in',
+      pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`
     }
-  );
-});
+  )
+})
 </script>
 
 <template>

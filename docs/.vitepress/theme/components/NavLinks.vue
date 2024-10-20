@@ -1,22 +1,22 @@
 <script setup>
-import { defineProps, computed } from "vue";
-import { slugify } from "@mdit-vue/shared";
-import NavLink from "./NavLink.vue";
+import { defineProps, computed } from 'vue'
+import { slugify } from '@mdit-vue/shared'
+import NavLink from './NavLink.vue'
 
 const props = defineProps({
   title: {
     type: String,
-    required: true,
+    required: true
   },
   items: {
     type: Array,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
-const component = computed(() => props.tag ?? "h2");
+const component = computed(() => props.tag ?? 'h2')
 
-const formatTitle = computed(() => slugify(props.title));
+const formatTitle = computed(() => slugify(props.title))
 </script>
 
 <template>

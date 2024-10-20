@@ -1,12 +1,12 @@
-import DefaultTheme from "vitepress/theme"
-import { h, watch } from "vue"
+import DefaultTheme from 'vitepress/theme'
+import { h, watch } from 'vue'
 import { useData } from 'vitepress'
-import myLayout from "./components/Layout.vue"
+import myLayout from './components/Layout.vue'
 import NavLinks from './components/NavLinks.vue'
 
-import "./styles/index.scss"
+import './styles/index.scss'
 
-let homePageStyle;
+let homePageStyle
 
 export default {
   extends: DefaultTheme,
@@ -27,13 +27,12 @@ export default {
   enhanceApp({ app, router }) {
     app.component('NavLinks', NavLinks)
 
-    if (typeof window === 'undefined')
-      return
+    if (typeof window === 'undefined') return
 
     watch(
       () => router.route.data.relativePath,
       () => updateHomePageStyle(location.pathname === '/'),
-      { immediate: true },
+      { immediate: true }
     )
   }
 }

@@ -2,9 +2,19 @@
 <script setup>
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import { nextTick, provide } from 'vue'
+import { nextTick, provide, onMounted } from 'vue'
+import confetti from 'canvas-confetti'
+
 const { isDark } = useData()
 const { Layout } = DefaultTheme
+
+onMounted(() => {
+  confetti({
+    particleCount: 280,
+    spread: 180,
+    origin: { y: 0.7 }
+  })
+})
 
 // Determine whether it is a pc
 const isPC = () => window.matchMedia('(min-width: 769px)').matches

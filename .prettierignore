@@ -1,18 +1,19 @@
-# editor directories and files
-.idea
-
 # dependencies
 node_modules/
 
 # compiled output
+dist/
 .vitepress/dist/
-dist
 cache
 .cache
 .temp
 .tmp
 
-# log and lock files
+# Ignore specific file types
+*.md~
 *.log
 
-.DS_Store
+# Ignore test files
+*.test.js
+*.spec.js
+

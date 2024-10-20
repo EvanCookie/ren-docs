@@ -8,6 +8,6 @@
 
 ## PC 页面
 
-![img](./pics/home_white.png)
+![img](./images/home_white.png)
 
-![img](./pics/home_dark.png)
+![img](./images/home_dark.png)

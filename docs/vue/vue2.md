@@ -687,8 +687,7 @@ key 是虚拟 DOM 对象的标识，当数据发生变化时， Vue 根据【新
 
 ## 2.11 表单数据绑定
 
-> 前往官网详细讲解：https://v2.cn.vuejs.org/v2/guide/forms.html
->
+> [前往官网详细讲解](https://v2.cn.vuejs.org/v2/guide/forms.html)
 
 # 3. 自定义指令 & 过滤器
 
@@ -810,7 +809,96 @@ new Vue({
 8. **destroyed** (在Vue 3中更名为`unmounted`):
    - Vue实例销毁后调用。调用后，所有的事件监听器会被移除，所有的子实例也会被销毁。
 
-# 4. 组件
+# 5. 组件
+
+组件系统是 Vue 的另一个重要概念，因为它是一种抽象，允许我们使用小型、独立和通常可复用的组件构建大型应用。仔细想想，几乎任意类型的应用界面都可以抽象为一个组件树：
+
+![Component Tree](https://v2.cn.vuejs.org/images/components.png)
+
+### 全局注册
+
+定义一个名为 ` my-button` 的组件，示例代码如下：
+
+```js
+Vue.component('my-button', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: `<button v-on:click="count++">You clicked me {{ count }} times.</button>`
+})
+
+new Vue({
+  //...
+})
+```
+
+### 局部注册
+
+全局注册往往是不够理想的。全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。这造成了用户下载的无用的 JavaScript 的增加。可通过 `components`配置项注册
+
+```js
+components: {
+  'my-button': {
+    data：function () {
+      return {
+        count: 0
+      }
+    },
+    template: `<button v-on:click="count++">You clicked me {{ count }} times.</button>`
+  }
+}
+```
+
+### 使用组件
+
+注册完成后，组件是可复用的 Vue 实例，且带有一个名字：在这个例子中是 `<my-button>`。可以把这个组件作为自定义元素来使用
+
+```html
+<div id="app">
+  <my-button></my-button>
+  <my-button></my-button>
+  <my-button></my-button>
+</div>
+```
+
+你可以将组件进行任意次数的复用：每个组件都会各自独立维护它的 `count`。因为你每用一次组件，就会有一个它的新**实例**被创建。
+
+:::warning 注意
+
+- 全局组件可以在 Vue 实例及其所有子组件中使用，而局部注册组件仅能在当前注册的组件及其子组件中使用。
+
+- 组件的配置不可以写 `el` 
+
+- 组件的 `data` 选项必须是一个函数，否则将影响到其它所有实例
+- 定义件名的两种方式： `kebab-case`(短横线分隔命名)  与 `PascalCase`(首字母大写命名) 
+
+```js
+Vue.component('my-component-name', { /* ... */ }) // kebab-case
+Vue.component('MyComponentName', { /* ... */ }) // PascalCase
+```
+
+:::
+
+### 单文件组件
+
+在很多 Vue 项目中，我们使用 `Vue.component` 来定义全局组件，紧接着用 `new Vue({ el: '#app '})` 在每个页面内指定一个容器元素。
+
+这种方式在很多中小规模的项目中运作的很好，在这些项目里 JavaScript 只被用来加强特定的视图。但当在更复杂的项目中，或者你的前端完全由 JavaScript 驱动的时候，下面这些缺点将变得非常明显：
+
+- **全局定义 (Global definitions)** 强制要求每个 component 中的命名不得重复
+- **字符串模板 (String templates)** 缺乏语法高亮，在 HTML 有多行的时候，需要用到丑陋的 `\`
+- **不支持 CSS (No CSS support)** 意味着当 HTML 和 JavaScript 组件化时，CSS 明显被遗漏
+- **没有构建步骤 (No build step)** 限制只能使用 HTML 和 ES5 JavaScript，而不能使用预处理器，如 Pug (formerly Jade) 和 Babel
+
+单文件组件（Single File Component，简称 SFC）是 Vue.js 框架中的一种组件化编程方式，它将一个组件的 HTML、CSS 和 JavaScript 代码都放在同一个文件中，文件后缀是`.vue` 为以上所有问题提供了解决方法，并且还可以使用 webpack 或 Browserify 等构建工具。
+
+这是一个文件名为 `Hello.vue` 的简单实例：
+
+![](https://v2.cn.vuejs.org/images/vue-component.png)
+
+> [更多详细请到官网查看](https://v2.cn.vuejs.org/v2/guide/single-file-components.html)
 
 # 5. prop
 

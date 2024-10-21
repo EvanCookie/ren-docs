@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, computed } from 'vue'
+import { computed } from 'vue'
 import { slugify } from '@mdit-vue/shared'
 import NavLink from './NavLink.vue'
 

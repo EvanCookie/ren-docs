@@ -5,24 +5,14 @@ import { head, nav, sidebar } from './configs'
 
 export default defineConfig({
   outDir: '../dist',
-  title: "RenDocs",
+  title: 'RenDocs',
   lang: 'zh-CN',
-  description: "RenDocs知识库，包含前端常用知识、笔记、日常工具等",
+  description: 'RenDocs知识库，包含前端常用知识、笔记、日常工具等',
   head,
-
-  // markdown配置
-  markdown: {
-    image: {
-      // 启用图片懒加载
-      lazyLoading: true
-    }
-  },
 
   // 主题配置
   themeConfig: {
     logo: '/logo.png',
-
-
     nav,
     sidebar,
 
@@ -32,9 +22,7 @@ export default defineConfig({
     },
 
     // 友情链接
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/EvanCookie' }
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/EvanCookie' }],
 
     returnToTopLabel: '回到顶部',
     sidebarMenuLabel: '菜单',
@@ -54,18 +42,36 @@ export default defineConfig({
     // 右侧大纲配置
     outline: {
       level: 'deep',
-      label: '本页内容',
+      label: '本页内容'
     },
 
     docFooter: {
       prev: '上一页',
-      next: '下一页',
+      next: '下一页'
     },
 
     // 页脚
     footer: {
       message: 'Released under the MIT License.',
       copyright: `Copyright © 2024-${new Date().getFullYear()} Evan Cookie`
-    },
+    }
+  },
+
+  // markdown配置
+  markdown: {
+    image: {
+      // 启用图片懒加载
+      lazyLoading: true
+    }
+  },
+  // Vite 配置选项
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler' // 或 "modern"，"legacy"
+        }
+      }
+    }
   }
 })

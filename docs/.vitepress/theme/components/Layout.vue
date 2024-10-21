@@ -1,59 +1,67 @@
 <!-- .vitepress/theme/components/Layout.vue -->
 <script setup>
-import { useData } from 'vitepress'
+import { useData, useRoute } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { nextTick, provide, onMounted } from 'vue'
 import confetti from 'canvas-confetti'
 
-const { isDark } = useData()
 const { Layout } = DefaultTheme
+const { isDark } = useData()
+const route = useRoute()
 
-onMounted(() => {
+// Trigger confetti.
+const useConfetti = () => {
   confetti({
     particleCount: 280,
     spread: 180,
     origin: { y: 0.7 }
   })
+}
+
+// Component mounting completed
+onMounted(() => {
+  // Homepage triggers confetti
+  if (route.path === '/') useConfetti()
 })
 
-// Determine whether it is a pc
+// Determine whether it is a pc.
 const isPC = () => window.matchMedia('(min-width: 769px)').matches
 
-// Check Whether to enable Transitions
+// Check Whether to enable Transitions.
 const enableTransitions = () =>
   'startViewTransition' in document &&
   window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
   isPC()
 
-// Toggle appearance function
+// Toggle appearance function.
 provide('toggle-appearance', async ({ clientX: x, clientY: y }) => {
-  // startViewTransition direct switch over is not supported
+  // startViewTransition direct switch over is not supported.
   if (!enableTransitions()) {
     isDark.value = !isDark.value
     return
   }
 
-  // Calculate the maximum radius of the animation
+  // Calculate the maximum radius of the animation.
   const maxRadius = Math.hypot(
     Math.max(x, innerWidth - x),
     Math.max(y, innerHeight - y)
   )
 
-  // Define the start and end of clip-path
+  // Define the start and end of clip-path.
   const clipPath = [
     `circle(0px at ${x}px ${y}px)`,
     `circle(${maxRadius}px at ${x}px ${y}px)`
   ]
 
-  // Supports the startViewTransition API, which is used for transition effects
+  // Supports the startViewTransition API, which is used for transition effects.
   await document.startViewTransition(async () => {
     isDark.value = !isDark.value
 
-    // Waiting for DOM updates
+    // Waiting for DOM updates.
     await nextTick()
   }).ready
 
-  // Use clip-path to create a transition animation
+  // Use clip-path to create a transition animation.
   document.documentElement.animate(
     { clipPath: isDark.value ? clipPath.reverse() : clipPath },
     {

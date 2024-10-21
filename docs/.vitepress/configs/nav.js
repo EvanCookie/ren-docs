@@ -1,4 +1,5 @@
 export const nav = [
+  { text: '主页', link: 'index' },
   { text: '导航', link: 'tools-nav/index' },
   {
     text: '前端框架',

@@ -1,5 +1,5 @@
 ---
-outline: [1, 6]
+outline: [1, 2]
 ---
 
 # 1. Vue2 介绍
@@ -21,11 +21,11 @@ outline: [1, 6]
   <script>
     // 创建vue实例
     const vm = new Vue({
-      el: "#app", // 指定容器
+      el: '#app', // 指定容器
       data: {
-        msg: "Vue2", // 数据
-      },
-    });
+        msg: 'Vue2' // 数据
+      }
+    })
   </script>
 </body>
 ```
@@ -68,15 +68,14 @@ Mustache 语法不能作用在 HTML attribute (属性) 上，遇到这种情况�
 
 ```html
 <div>{{ number + 1 }}</div>
-
 <div>{{ ok ? 'YES' : 'NO' }}</div>
-
 <div>{{ message.split('').reverse().join('')}}</div>
-
 <div v-bind:id="'list-' + id"></div>
 ```
 
 ### 指令
+
+[Vue2 官网指令文档](https://v2.cn.vuejs.org/v2/api/#%E6%8C%87%E4%BB%A4)
 
 ## 2.3 数据绑定
 
@@ -90,11 +89,11 @@ Mustache 语法不能作用在 HTML attribute (属性) 上，遇到这种情况�
   <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16"></script>
   <script>
     const vm = new Vue({
-      el: "#app",
+      el: '#app',
       data: {
-        name: "Ren",
-      },
-    });
+        name: 'Ren'
+      }
+    })
   </script>
 </body>
 ```
@@ -107,9 +106,6 @@ Mustache 语法不能作用在 HTML attribute (属性) 上，遇到这种情况�
 ```html
 单项数据绑定：<input type="text" :value="name" /> <br />
 双向数据绑定：<input type="text" v-model="name" /> <br />
-
-<!-- 以下写法错误 v-model 只能用在表单类（输入的元素）上 -->
-<h2 v-model:x="name">Ren</h2>
 ```
 
 :::
@@ -121,7 +117,7 @@ Mustache 语法不能作用在 HTML attribute (属性) 上，遇到这种情况�
 ```js
 const vm = new Vue({
   // 选项
-});
+})
 ```
 
 虽然没有完全遵循 [MVVM 模型](https://baike.baidu.com/item/MVVM/96310?fr=ge_ala)，但是 Vue 的设计也受到了它的启发。因此在文档中经常会使用 `vm` (ViewModel 的缩写) 这个变量名表示 Vue 实例。
@@ -141,12 +137,12 @@ const vm = new Vue({
 ```js
 // 示列
 const vm = new Vue({
-  el: "#app",
+  el: '#app',
   data: {
-    message: "Hello Vue2!",
+    message: 'Hello Vue2!'
   },
-  template: "<div>{{ message }}</div>",
-});
+  template: '<div>{{ message }}</div>'
+})
 ```
 
 ## 2.6 事件处理
@@ -182,21 +178,16 @@ const vm = new Vue({
 <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16"></script>
 <script>
   const vm = new Vue({
-    el: "#app",
-    // 在 `data` 对象中定义数据 （data最好写成函数的形式）
-    data() {
-      return {
-        counter: 0,
-      };
+    el: '#app',
+    data: {
+      counter: 0
     },
-    // 在 `methods` 对象中定义方法
     methods: {
       add() {
-        // +1方法
-        this.counter += 1;
-      },
-    },
-  });
+        this.counter += 1
+      }
+    }
+  })
 </script>
 ```
 
@@ -274,7 +265,7 @@ const vm = new Vue({
 
 :::
 
-## 2.7 计算属性与监听器
+## 2.7 计算属性 & 监听器
 
 ### 计算属性
 
@@ -298,16 +289,16 @@ const vm = new Vue({
 
 ```js
 const vm = new Vue({
-  el: "#app",
+  el: '#app',
   data: {
-    message: "Hello",
+    message: 'Hello'
   },
   computed: {
     reversedMessage: function () {
-      return this.message.split("").reverse().join(""); // `this` 指向 vm 实例
-    },
-  },
-});
+      return this.message.split('').reverse().join('') // `this` 指向 vm 实例
+    }
+  }
+})
 ```
 
 计算属性的完整写法：
@@ -340,47 +331,44 @@ computed: {
 <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16"></script>
 <script>
   const vm = new Vue({
-    el: "#app",
-    // 定义数据
+    el: '#app',
     data: {
-      message: "Hello",
+      message: 'Hello',
       obj: {
         a: 1,
-        b: 100,
+        b: 100
       },
-      name: "Evan Cookie",
+      name: 'Evan Cookie'
     },
-    // 定义方法
     methods: {
       set() {
-        this.message = this.message + "~";
-      },
+        this.message = this.message + '~'
+      }
     },
-    // 侦听器
     watch: {
       // 完整写法
       message: {
         immediate: true, // 侦听开始之后被立即调用
         deep: true, // 开启深度侦听（不管对象嵌套多深）
         handler(newValue, oldValue) {
-          console.log("message 数据变化了");
-          console.log(newValue, oldValue);
-        },
+          console.log('message 数据变化了')
+          console.log(newValue, oldValue)
+        }
       },
       // 侦听对象的某个属性
-      "obj.a": {
+      'obj.a': {
         handler(newValue, oldValue) {
-          console.log("message 数据变化了");
-          console.log(newValue, oldValue);
-        },
+          console.log('message 数据变化了')
+          console.log(newValue, oldValue)
+        }
       },
       // 不需要immediate, deep 的情况况下 => 可简写
       name(newValue, oldValue) {
-        console.log("message 数据变化了");
-        console.log(newValue, oldValue);
-      },
-    },
-  });
+        console.log('message 数据变化了')
+        console.log(newValue, oldValue)
+      }
+    }
+  })
 </script>
 ```
 
@@ -390,39 +378,39 @@ computed: {
 
 ```js
 const vm = new Vue({
-  el: "#app",
+  el: '#app',
   data: {
-    name: "Evan Cookie",
+    name: 'Evan Cookie',
     obj: {
       a: 100,
-      b: 200,
-    },
-  },
-});
+      b: 200
+    }
+  }
+})
 
-vm.$watch("obj.a", function (newValue, oldValue) {
-  console.log(newValue, oldValue);
-});
+vm.$watch('obj.a', function (newValue, oldValue) {
+  console.log(newValue, oldValue)
+})
 
 vm.$watch(
-  "name",
+  'name',
   function (newValue, oldValue) {
-    console.log(newValue, oldValue);
+    console.log(newValue, oldValue)
   },
   {
     deep: true,
-    immediate: true,
+    immediate: true
   }
-);
+)
 ```
 
 `vm.$watch` 返回一个取消观察函数，用来停止触发回调：
 
 ```js
-const unwatch = vm.$watch("obj.b", callback);
+const unwatch = vm.$watch('obj.b', callback)
 
 // 取消观察
-unwatch();
+unwatch()
 ```
 
 :::danger
@@ -433,7 +421,7 @@ unwatch();
 
 :::
 
-## 2.8 Class 与 Style 绑定
+## 2.8 Class & Style 绑定
 
 ### 绑定 HTML Class
 
@@ -442,13 +430,13 @@ unwatch();
 **对象语法**
 
 ```html
-<!-- 示例一 -->
 <div v-bind:class="{ active: isActive }"></div>
 
-<!-- 示例二 -->
-<div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+<div
+  class="static"
+  v-bind:class="{ active: isActive, 'text-danger': hasError }"
+></div>
 
-<!-- 示例三 -->
 <div v-bind:class="classObj"></div>
 ```
 
@@ -480,10 +468,8 @@ data: {
 可以把一个数组传给 `v-bind:class`，以应用一个 class 列表：
 
 ```html
-<!-- 示例一 -->
 <div v-bind:class="['active', 'text-danger']"></div>
 
-<!-- 示例二 -->
 <div v-bind:class="classArr"></div>
 ```
 
@@ -555,44 +541,30 @@ data: {
 }
 ```
 
-
-
 ## 2.9 条件渲染
 
 ### v-if
 
-`v-if` 指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回 true  值的时候被渲染。
+`v-if` 指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回 true 值的时候被渲染。
 
 ```html
 <h1 v-if="awesome">Vue is awesome!</h1>
 ```
 
- `v-else` 指令来表示 `v-if` 的 "else 块" ：
+`v-else` 指令来表示 `v-if` 的 "else 块" ：
 
 ```html
-<div v-if="awesome">
-  Now you see me
-</div>
-<div v-else>
-  Now you don't
-</div>
+<div v-if="awesome">Now you see me</div>
+<div v-else>Now you don't</div>
 ```
 
 `v-else-if`，顾名思义，充当 `v-if` 的 "else-if 块"，可以连续使用：
 
 ```html
-<div v-if="type === 'A'">
-  A
-</div>
-<div v-else-if="type === 'B'">
-  B
-</div>
-<div v-else-if="type === 'C'">
-  C
-</div>
-<div v-else>
-  Not A/B/C
-</div>
+<div v-if="type === 'A'">A</div>
+<div v-else-if="type === 'B'">B</div>
+<div v-else-if="type === 'C'">C</div>
+<div v-else>Not A/B/C</div>
 ```
 
 因为 `v-if` 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 `<template>` 元素当做不可见的包裹元素，并在上面使用 `v-if`。最终的渲染结果将不包含 `<template>` 元素。
@@ -605,8 +577,6 @@ data: {
 </template>
 ```
 
-
-
 ::: warning 注意
 
 类似于 `v-else`，`v-else-if` 也必须紧跟在带 `v-if` 或者 `v-else-if` 的元素之后。
@@ -615,7 +585,7 @@ data: {
 
 ### v-show
 
-用于根据条件展示元素的选项是 `v-show` 指令。用法与 `v-if`大致一样：
+`v-show` 用于根据条件展示元素的选项是 `v-show` 指令。用法与 `v-if`大致一样：
 
 ```html
 <h1 v-show="isShow">Hello!</h1>
@@ -625,7 +595,7 @@ data: {
 
 - `v-if` 是“真正”的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。
 - `v-if` 也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。
-- 相比之下，`v-show` 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于  CSS property `display`进行切换。
+- 相比之下，`v-show` 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS property `display`进行切换。
 - 一般来说，`v-if` 有更高的切换开销，而 `v-show` 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 `v-show` 较好；如果在运行时条件很少改变，则使用 `v-if` 较好。
 
 :::
@@ -640,13 +610,11 @@ data: {
 
 ### v-for
 
- `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 `items` 是源数据数组，而 `item` 则是被迭代的数组元素的别名。
+`v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 `items` 是源数据数组，而 `item` 则是被迭代的数组元素的别名。
 
 ```html
 <ul id="list-box-1">
-  <li v-for="item in items" :key="item.message">
-    {{ item.message }}
-  </li>
+  <li v-for="item in items" :key="item.message">{{ item.message }}</li>
 </ul>
 ```
 
@@ -654,10 +622,7 @@ data: {
 const vm = new Vue({
   el: '#list-box-1',
   data: {
-    items: [
-      { message: 'Foo' },
-      { message: 'Bar' }
-    ]
+    items: [{ message: 'Foo' }, { message: 'Bar' }]
   }
 })
 ```
@@ -665,11 +630,7 @@ const vm = new Vue({
 在 `v-for` 块中，我们可以访问所有父作用域的 property。`v-for` 还支持一个可选的第二个参数，即当前项的索引`index`。
 
 ```html
-<ul id="list-box-2">
-  <li v-for="(item, index) in items">
-    {{ item.message }} - {{ index }}
-  </li>
-</ul>
+<li v-for="(item, index) in items">{{ item.message }} - {{ index }}</li>
 ```
 
 你也可以用 `of` 替代 `in` 作为分隔符，因为它更接近 JavaScript 迭代器的语法：
@@ -683,27 +644,15 @@ const vm = new Vue({
 - `v-for`还可以遍历：字符串、指定次数
 
 ```html
-<!-- 遍历字符串 -->
-<ul>
-  <li v-for="(item, index) in 'EvanCookie'">
-    {{ item }} - {{ index }}
-  </li>
-</ul>
+<li v-for="(item, index) in 'EvanCookie'">{{ item }} - {{ index }}</li>
 
-<!-- 遍历指定次数 -->
-<ul>
-  <li v-for="(item, index) in 5">
-    {{ item }} - {{ index }}
-  </li>
-</ul>
+<li v-for="(item, index) in 5">{{ item }} - {{ index }}</li>
 ```
 
 - 为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 `key` attribute：
 
 ```html
-<div v-for="item in items" v-bind:key="item.id">
-  <!-- 内容 -->
-</div>
+<div v-for="item in items" v-bind:key="item.id"></div>
 ```
 
 - 建议尽可能在使用 `v-for` 时提供 `key` attribute，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升。因为它是 Vue 识别节点的一个通用机制，`key` 并不仅与 `v-for` 特别关联，它还具有其它用途。
@@ -718,7 +667,7 @@ const vm = new Vue({
 
 **面试题： react 、 vue 中的 key 有什么作用？( key 的内部原理）：**
 
- key 是虚拟 DOM 对象的标识，当数据发生变化时， Vue 根据【新数据】生成【新虚拟 DOM 】,随后进行【新虚拟 DOM 】与【旧虚拟 DOM 】的差异比较，对比规则如下：
+key 是虚拟 DOM 对象的标识，当数据发生变化时， Vue 根据【新数据】生成【新虚拟 DOM 】,随后进行【新虚拟 DOM 】与【旧虚拟 DOM 】的差异比较，对比规则如下：
 
 **对比规则：**
 
@@ -736,7 +685,130 @@ const vm = new Vue({
 1. 最好使用每条数据的唯一标识作为 key ，比如 id 、手机号、身份证号、学号等唯一值。
 2. 如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用 index 作为 key 是没有问题的。
 
-# 3. 生命周期
+## 2.11 表单数据绑定
+
+> 前往官网详细讲解：https://v2.cn.vuejs.org/v2/guide/forms.html
+>
+
+# 3. 自定义指令 & 过滤器
+
+### 自定义指令
+
+除了内置的指令 (`v-model` 和 `v-show`)，Vue 也允许注册自定义指令。下面以注册一个 "当页面加载时，该元素将获得聚焦" 的自定义指令 `v-focus`为例：
+
+
+注册局部指令，组件中也接受一个 `directives` 的配置选项：
+
+```js
+directives: {
+  focus: {
+    // 指令的定义
+    inserted: function (el) {
+      el.focus()
+    }
+  }
+}
+```
+注册全局指令，在 `new Vue()` 之前
+
+```js
+// 在 new Vue 之前定义
+Vue.directive('focus', {
+  // 当被绑定的元素插入到 DOM 中时……
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})
+
+new Vue({
+  // ...
+})
+```
+
+可以在模板中任何元素上使用新的 `v-focus` property，如下：
+
+```html
+<input v-focus>
+```
+
+> [更多自定义指令详情点击查看官网](https://v2.cn.vuejs.org/v2/guide/custom-directive.html)
+
+### 过滤器
+
+Vue.js 允许你自定义过滤器，可被用于一些常见的文本格式化。过滤器可以用在两个地方：**双花括号插值和 `v-bind` 表达式** (后者从 2.1.0+ 开始支持)。过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符号指示：
+
+```html
+<!-- 在双花括号中 -->
+{{ message | capitalize }}
+
+<!-- 在 `v-bind` 中 -->
+<div v-bind:id="rawId | formatId"></div>
+```
+
+你可以在一个组件的配置选项中定义局部的过滤器：
+
+```js
+filters: {
+  capitalize: function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+  }
+}
+```
+
+或者在创建 Vue 实例之前全局定义过滤器：
+
+```js
+Vue.filter('capitalize', function (value) {
+  if (!value) return ''
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})
+
+new Vue({
+  // ...
+})
+```
+
+
+
+# 4. 生命周期
+
+生命周期是指从Vue实例创建到销毁所经历的一系列过程。每个阶段都有对应的生命周期钩子（也叫生命周期函数），开发者可以利用这些钩子在特定时刻执行自定义逻辑。以下是Vue2完整的生命周期及其各个阶段的详细说明：
+
+![](https://v2.cn.vuejs.org/images/lifecycle.png)
+
+1. **beforeCreate**:
+   - 在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。
+   - 这个阶段中`data`和`methods`都还未被初始化。
+
+2. **created**:
+   - 实例已经完成数据观测，属性和方法的运算，`$watch`监听器设置完毕。
+   - 此时`data`已经被绑定，但DOM还未生成，所以无法访问DOM元素。
+
+3. **beforeMount**:
+   - 在挂载开始之前被调用：相关的`render`函数首次被调用。
+   - 在这个阶段模板编译成HTML并插入文档前，你可以在这个阶段进行最后一次修改数据的操作。
+
+4. **mounted**:
+   - 实例已经挂载到DOM上，此时可以访问到DOM元素。
+   - 如果你需要操作DOM节点，或者使用第三方库如jQuery，应该在这里进行。
+
+5. **beforeUpdate**:
+   - 数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前。
+   - 你可以在该钩子中进一步地更改状态，这不会触发附加的重渲染过程。
+
+6. **updated**:
+   - 由于数据更改导致的虚拟DOM重新渲染和打补丁，在这之后会调用此钩子。
+   - 当这个钩子被调用时，组件DOM已经更新，所以你现在可以执行依赖于DOM的操作。
+
+7. **beforeDestroy** (在Vue 3中更名为`beforeUnmount`):
+   - 实例销毁之前调用。在这一步，实例仍然完全可用。
+
+8. **destroyed** (在Vue 3中更名为`unmounted`):
+   - Vue实例销毁后调用。调用后，所有的事件监听器会被移除，所有的子实例也会被销毁。
 
 # 4. 组件
 

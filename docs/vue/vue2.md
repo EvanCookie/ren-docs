@@ -4,7 +4,7 @@ outline: [1, 2]
 
 # 1. Vue2 介绍
 
-[Vue](https://v2.vuejs.org/) (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与[现代化的工具链](https://v2.cn.vuejs.org/v2/guide/single-file-components.html)以及各种[支持类库](https://github.com/vuejs/awesome-vue#libraries--plugins)结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+[Vue](https://v2.cn.vuejs.org/) (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与[现代化的工具链](https://v2.cn.vuejs.org/v2/guide/single-file-components.html)以及各种[支持类库](https://github.com/vuejs/awesome-vue#libraries--plugins)结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
 
 # 2. Vue2 基础
 
@@ -815,7 +815,7 @@ new Vue({
 
 ![Component Tree](https://v2.cn.vuejs.org/images/components.png)
 
-### 全局注册
+### 全局注册组件
 
 定义一个名为 ` my-button` 的组件，示例代码如下：
 
@@ -834,7 +834,7 @@ new Vue({
 })
 ```
 
-### 局部注册
+### 局部注册组件
 
 全局注册往往是不够理想的。全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。这造成了用户下载的无用的 JavaScript 的增加。可通过 `components`配置项注册
 
@@ -857,8 +857,11 @@ components: {
 
 ```html
 <div id="app">
+  <!-- 组件标签的写法 1 -->
   <my-button></my-button>
   <my-button></my-button>
+  <!-- 组件标签的写法 2 单标签写法 注意：此写法在不使用脚手架的环境下将导致后续组件无法渲染 -->
+  <my-button />
   <my-button></my-button>
 </div>
 ```
@@ -869,15 +872,67 @@ components: {
 
 - 全局组件可以在 Vue 实例及其所有子组件中使用，而局部注册组件仅能在当前注册的组件及其子组件中使用。
 
-- 组件的配置不可以写 `el` 
+- 组件的配置项，可以通过`name` 为组件起名，不可以写 `el`（el只有根才可以写） 
 
-- 组件的 `data` 选项必须是一个函数，否则将影响到其它所有实例
+- 组件的 `data` 配置项必须是一个函数，否则将影响到其它所有实例
 - 定义件名的两种方式： `kebab-case`(短横线分隔命名)  与 `PascalCase`(首字母大写命名) 
 
 ```js
-Vue.component('my-component-name', { /* ... */ }) // kebab-case
-Vue.component('MyComponentName', { /* ... */ }) // PascalCase
+Vue.component('my-component-name', {}) // kebab-case
+Vue.component('MyComponentName', {}) // PascalCase
 ```
+
+:::
+
+### Vue.extend
+
+使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。`data` 选项是特例，需要注意 - 在 `Vue.extend()` 中它必须是函数，并且不可以书写 `el`字段
+
+```html
+<!-- 容器 -->
+<div id="mount-point"></div>
+```
+
+```js
+// 创建构造器
+const Profile = Vue.extend({
+  template: '<h2>Hello, {{myName}}</h2>',
+  data() {
+    return { myName: 'Evan Cookie' }
+  }
+})
+
+// 创建 Profile 实例，并挂载到一个容器
+new Profile().$mount('#mount-point')
+```
+
+结果如下：
+
+```html
+<h2>Hello, Evan Cookie</h2>
+```
+
+###  Vue.component
+
+注册或获取全局组件
+
+```js
+// 传入一个扩展过的构造器
+Vue.component('my-component', Vue.extend({ /* ... */ })
+
+// 传入配置对象 (这将自动调用 Vue.extend)
+Vue.component('my-component', { /* ... */ })
+
+// 获取注册的组件实列 (始终返回构造器)
+const MyComponent = Vue.component('my-component')
+```
+
+
+
+:::warning 一个重要的内置关系
+
+- `VueComponent.prototype.__proto__` === `Vue.prototype`
+- 为了让组件实列对象，也可以访问到 Vue原型上的属性和方法。
 
 :::
 

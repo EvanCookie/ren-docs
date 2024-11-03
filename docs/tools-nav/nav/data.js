@@ -147,8 +147,43 @@ export const NAV_DATA = [
     ]
   },
   {
+    title: '中文网',
+    items: [
+      {
+        icon: 'https://www.docschina.org/favicon.svg',
+        title: '印记中文',
+        desc: '印记中文 - 深入挖掘国外前端新领域，为国内 Web 前端开发人员提供优质文档！',
+        link: 'https://www.docschina.org/'
+      },
+      {
+        icon: 'https://img.nodejs.cn/favicon.png',
+        title: 'Node.js 中文网',
+        desc: '网站主页提供了更多优质中文网',
+        link: 'https://nodejs.cn/'
+      },
+      {
+        icon: 'https://www.bootcss.com/assets/img/navlogo-small.png',
+        title: 'Bootstrap 中文网',
+        desc: '前端开源项目 CDN 加速服务，同时提供了一些技术的中文文档',
+        link: 'https://www.bootcss.com/'
+      },
+      {
+        icon: 'https://www.pnpm.cn/img/favicon.png',
+        title: 'pnpm 中文网',
+        desc: '网站的友链部分，包含许多其它技术中文网站',
+        link: 'https://www.pnpm.cn/'
+      }
+    ]
+  },
+  {
     title: 'Vue 生态',
     items: [
+      {
+        icon: 'https://cli.vuejs.org/favicon.png',
+        title: 'Vue CLI',
+        desc: 'Vue.js 开发的标准工具（脚手架）',
+        link: 'https://cli.vuejs.org/zh/'
+      },
       {
         icon: 'https://cn.vuejs.org/logo.svg',
         title: 'Vue 2',

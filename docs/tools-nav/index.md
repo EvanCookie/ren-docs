@@ -7,7 +7,7 @@ outline: [2, 3, 4]
 import Nav from './nav/Nav.vue'
 </script>
 
-# 工具导航
+# 前端导航
 
 ::: info 导航说明
 

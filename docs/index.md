@@ -14,7 +14,7 @@ hero:
       text: 开始阅读
       link: /other/cross_domain
     - theme: art
-      text: 工具导航
+      text: 前端导航
       link: /tools-nav/index
     - theme: brand
       text: GitHub
@@ -25,8 +25,8 @@ hero:
 
 features:
   - icon: 🛠️
-    title: 工具导航
-    details: 记录开发和学习中所用到的技术，插件，扩展等
+    title: 前端导航
+    details: 记录前端开发和学习中所用到的技术，插件，扩展等
     linkText: 查阅工具
     link: /tools-nav/index
   - icon: 📖
@@ -37,5 +37,5 @@ features:
   - icon: 🧑‍💻
     title: 关于我
     details: 一个正在上学的菜鸟......
-    link:
+    link: /me/index
 ---

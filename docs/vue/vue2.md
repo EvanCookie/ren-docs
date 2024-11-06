@@ -1,5 +1,5 @@
 ---
-outline: [1, 2]
+ outline: [1, 2]
 ---
 
 # 1. Vue2 介绍
@@ -731,7 +731,7 @@ new Vue({
 <input v-focus>
 ```
 
-> [更多自定义指令详情点击查看官网](https://v2.cn.vuejs.org/v2/guide/custom-directive.html)
+> [更多详细请查看官网 自定义指令 文档](https://v2.cn.vuejs.org/v2/guide/custom-directive.html)
 
 ### 过滤器
 
@@ -771,7 +771,7 @@ new Vue({
 })
 ```
 
-
+> [更多详细请查看官网 过滤器 文档](https://v2.cn.vuejs.org/v2/guide/filters.html)
 
 # 4. 生命周期
 
@@ -953,16 +953,303 @@ const MyComponent = Vue.component('my-component')
 
 ![](https://v2.cn.vuejs.org/images/vue-component.png)
 
-> [更多详细请到官网查看](https://v2.cn.vuejs.org/v2/guide/single-file-components.html)
+> [更多详细请查看官网 单文件组件 文档](https://v2.cn.vuejs.org/v2/guide/single-file-components.html)
 
-# 5. prop
+# 6. prop
 
-# 6. 自定义事件
+### 向子组件传递数据
 
-# 7. 插槽
+```vue
+<!-- App.vue -->
+<template>
+  <div id="app">
+    <!-- 向子组件传递数据  -->
+    <MySchool name="北京大学" age="2000" />
+    <MySchool name="清华大学" age="3000" />
+    <MySchool name="麻省理工学院" age="4000" />
+  </div>
+</template>
 
-# 8. VueX
+<script>
+import MySchool from "./components/MySchool.vue";
+export default {
+  name: "App",
+  components: { MySchool },
+};
+</script>
+```
 
-# 9. Vue-Router
+```vue
+<!-- MySchool.vue -->
+<template>
+  <div class="my-school">
+    <h1>{{ name }}</h1>
+    <h2>{{ age }}</h2>
+  </div>
+</template>
 
-# 10. Elemment-UI
+<script>
+export default {
+  name: "MySchool",
+  props: ["name","age"], // 接收父组件传递数据
+};
+</script>
+```
+
+### props 的配置方式
+
+```vue
+<script>
+export default {
+  // 第一种：只接收
+  props: ["name","age"],
+};
+</script>
+
+<script>
+export default {
+  // 第二种：限制类型
+  props: {
+    name: String,
+    age: Number, // 也可以写成数组  age: [Number, String]
+  },
+};
+</script>
+
+<script>
+export default {
+  // 第三种：完整配置
+  props: {
+    name: {
+      type: String,
+      required: true, // 必要性
+    },
+    age: {
+      type: Number,
+      default: 2024, // 默认值
+    },
+  },
+};
+</script>
+```
+
+### 非单文件组件 prop
+
+```js
+// 注册全局组件
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+
+new Vue({
+  // ...
+})
+```
+
+```html
+<div id="app">
+  <!-- 使用组件 -->
+	<blog-post title="My journey with Vue"></blog-post>
+	<blog-post title="Blogging with Vue"></blog-post>
+	<blog-post title="Why Vue is so fun"></blog-post>
+</div>
+```
+
+> [更多详细请查看官网 prop 文档](https://v2.cn.vuejs.org/v2/guide/components-props.html)
+
+# 7. 混入 (mixin)
+
+混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本// 身的选项。
+
+### 基础
+
+```js
+// mixin.js
+// 定义一个混入对象（可以包含任意组件选项）
+export default {
+  data() {
+    return {
+      msg: "我是混入的数据",
+    };
+  },
+  methods: {
+    hello() {
+      alert("hello from mixin!");
+    },
+  },
+};
+```
+
+```vue
+<template>
+  <div>
+    <h1>{{ msg }}</h1>
+    <button @click="hello">混入Mixin</button>
+  </div>
+</template>
+
+<script>
+import mixin from "@/mixin"; // 导入混入配置
+
+export default {
+  //...
+  mixins: [mixin], // 使用混入
+};
+</script>
+```
+
+### 选项合并
+
+当组件和混入对象含**有同名选项时**，这些选项将以恰当的方式进行“合并”。比如，数据对象在内部会进行递归合并，并在发生冲突时以**组件数据优先**。如下示例：
+
+```js
+// mixin.js
+export default {
+  data() {
+    return {
+      message: "hello mixin",
+      foo: "abc",
+    };
+  },
+};
+```
+
+```vue
+<script>
+import mixin from "@/mixin";
+
+export default {
+  mixins: [mixin],
+  data() {
+    return {
+      message: "goodbye",
+      bar: "def",
+    };
+  },
+  created() {
+    console.log(this.$data); // => { message: "goodbye", foo: "abc", bar: "def" }
+  },
+};
+</script>
+```
+
+**同名钩子函数**将合并为一个数组，因此**都将被调用**。另外，**混入对象的钩子**将**在组件自身钩子之前**调用。
+
+```js
+const mixin = {
+  created() {
+    console.log('混入对象的钩子被调用')
+  }
+}
+
+new Vue({
+  mixins: [mixin],
+  created() {
+    console.log('组件钩子被调用')
+  }
+})
+
+// => "混入对象的钩子被调用"
+// => "组件钩子被调用"
+```
+
+:::warning 注意
+
+1. 值为对象的选项，例如 `methods`、`components` 和 `directives`，将被合并为同一个对象。两个对象键名冲突时，取组件对象的键值对。
+2. `Vue.extend()` 也使用同样的策略进行合并。
+
+:::
+
+### 全局混入
+
+混入也可以进行全局注册。使用时格外小心！一旦使用全局混入，它将影响**每一个**之后创建的 Vue 实例。
+
+```js
+Vue.mixin({
+  created() {
+     console.log('我是全局混入 => 我将影响 => Vue实例以及Vue组件实例')
+  }
+})
+
+new Vue({
+  //...
+})
+```
+> [更多详细请查看官网 mixin 文档](https://v2.cn.vuejs.org/v2/guide/mixins.html)
+
+# 8.插件
+
+插件通常用来为 Vue 添加全局功能。插件的功能范围没有严格的限制——一般有下面几种：
+
+1. 添加全局方法或者 property。
+2. 添加全局资源：指令/过滤器/过渡等。
+3. 通过全局混入来添加一些组件选项。
+4. 添加 Vue 实例方法，通过把它们添加到 `Vue.prototype` 上实现。
+5. 一个库，提供自己的 API，同时提供上面提到的一个或多个功能。
+
+### 开发插件
+
+Vue.js 的插件应该暴露一个 `install` 方法。这个方法的第一个参数是 `Vue` 构造器，第二个参数是`options`一个可选的选项对象：
+
+```js
+export default {
+  install(Vue, options) {
+    // 1. 添加全局方法或 property
+    Vue.myGlobalMethod = () => {
+      // 逻辑
+    };
+
+    // 2. 添加全局资源
+    Vue.directive("my-directive", {
+      bind(el, binding) {
+        console.log(el, binding);
+      },
+    });
+
+    // 3. 注入组件选项
+    Vue.mixin({
+      created() {
+        console.log("混入");
+      },
+    });
+
+    // 4. 添加实例方法
+    Vue.prototype.$myMethod = (methodOptions) => {
+      alert(methodOptions);
+    };
+  },
+};
+
+```
+
+### 使用插件
+
+通过全局方法 `Vue.use()` 使用插件。它需要在你调用 `new Vue()` 启动应用之前完成：
+
+```js
+import Plugins from "./plugins" // 导入插件 
+
+// 调用 Plugin.install(Vue)
+Vue.use(Plugins) // 使用插件
+
+new Vue({
+  // ...
+})
+```
+
+也可以传入一个可选的选项对象：
+
+```js
+Vue.use(Plugins, { someOption: true })
+```
+
+# 9.自定义事件
+
+# 10. 插槽
+
+# 11. VueX
+
+# 12. Vue-Router
+
+# 13. Elemment-UI
